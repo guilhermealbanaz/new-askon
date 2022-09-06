@@ -31,17 +31,39 @@ export default {
 <style></style> -->
 
 <template>
-  <div class="tudo">
+  <div class="tudo-individual">
     <div class="container-resenha-individual">
-      <div class="titulo-resenha">Titulo da Resenha :)
+      <div class="titulo-resenha text-white">Titulo da Resenha :)
+      </div>
+      <div class="box-estrelas-resenha">
+            <mdiStar class="icone-estrela" />
+            <mdiStar class="icone-estrela" />
+            <mdiStar class="icone-estrela" />
+            <mdiStar class="icone-estrela" />
+            <mdiStar class="icone-estrela" />
+          </div>
+      <div class="conteudo-resenha text-white">
+        Jogo muito bom, recomendo muito pra quem gosta do estilo It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes
+      </div>
+      <div class="criador-resenha text-white">Resenha feita por Fulano</div>
+      <div class="box-comentario-resenha">
+        <input type="text" class="comentario-resenha">
+        <div class="icone-curtir"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import mdiStar from "vue-material-design-icons/Star.vue";
+import mdiGithub  from "vue-material-design-icons/Github.vue";
+import mdiLinkedin   from "vue-material-design-icons/Linkedin.vue";
 export default {
-
+  components: {
+    mdiStar,
+    mdiGithub, 
+    mdiLinkedin,
+  },
 }
 </script>
 
@@ -50,19 +72,62 @@ export default {
   margin: 0;
   padding: 0;
 }
-.tudo {
+.tudo-individual {
   width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: red;
+  height: 200%;
+  position: absolute ;
 }
 .container-resenha-individual {
     width: 50%;
-    height: 1500px;
+    height: auto;
+    padding-bottom: 100px;
     display: flex;
-    justify-content: space-around;
+    gap: 60px;
     flex-direction: column;
+    align-items: center;
     margin: 250px auto;
     background-color: #111;
+}
+.titulo-resenha {
+  font-size: 35px;
+  margin-top: 50px;
+}
+.box-estrelas-resenha {
+  width: 200px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.conteudo-resenha {
+  width: 70%;
+  margin: 0 auto;
+}
+.criador-resenha {
+  width: 70%;
+  text-align: left;
+}
+.box-comentario-resenha {
+  width: 70%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comentario-resenha {
+  width: 60%;
+  height: 20px;
+  border-radius: 0 10px 10px 0;
+  background-color: #111;
+  border: 2px solid #4630AB;
+  padding-left: 5px;
+  color: #c9c9c9;
+}
+.icone-curtir {
+  width: 60px;
+  height: 60px;
+  background-image: url(../assets/curtir.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

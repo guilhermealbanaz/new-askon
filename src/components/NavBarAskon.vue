@@ -3,8 +3,7 @@
     <div class="nav">
       <div class="box-conteudo">
         <div class="logo-nav"></div>
-        <a href="#" class="texto-nav">reviews</a>
-        <a href="#" class="texto-nav">sobre nós</a>
+        <a href="#" class="texto-nav">resenhas</a>
         <a href="#" class="texto-nav">perfil</a>
         <a href="#" class="texto-nav">criar</a>
       </div>
@@ -51,7 +50,7 @@ export default {
 .texto-nav {
   color: #c9c9c9;
   font-size: 20px;
-  padding-right: 20px;
+  padding-right: 30px;
   border-right: 1px solid #4630ab;
   text-decoration: none;
 }
