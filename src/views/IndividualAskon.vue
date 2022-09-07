@@ -32,8 +32,8 @@ export default {
 
 <template>
   <div class="tudo-individual">
-    <div class="container-resenha-individual">
-      <div class="titulo-resenha text-white">Titulo da Resenha :)
+    <div class="container-resenha-individual" v-rellax="{speed: 10}">
+      <div class="titulo-resenha text-white">Dark Souls Resenha
       </div>
       <div class="box-estrelas-resenha">
             <mdiStar class="icone-estrela" />
@@ -47,13 +47,14 @@ export default {
       </div>
       <div class="criador-resenha text-white">Resenha feita por Fulano</div>
       <div class="box-comentario-resenha">
-        <input type="text" class="comentario-resenha">
+        <input placeholder="Comentar" type="text" class="comentario-resenha">
         <div class="icone-curtir"></div>
       </div>
     </div>
   </div>
 </template>
 
+<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=WeakMap"></script>
 <script>
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiGithub  from "vue-material-design-icons/Github.vue";
@@ -74,10 +75,13 @@ export default {
 }
 .tudo-individual {
   width: 100%;
-  height: 200%;
+  height: auto;
   position: absolute ;
+  background-image: url(../assets/fundo.jpg);
+  background-size: cover;
 }
 .container-resenha-individual {
+    border-radius: 20px;
     width: 50%;
     height: auto;
     padding-bottom: 100px;
@@ -85,7 +89,8 @@ export default {
     gap: 60px;
     flex-direction: column;
     align-items: center;
-    margin: 250px auto;
+    margin: 300px auto;
+    margin-bottom: 50px;
     background-color: #111;
 }
 .titulo-resenha {
@@ -115,7 +120,7 @@ export default {
 }
 .comentario-resenha {
   width: 60%;
-  height: 20px;
+  height: 30px;
   border-radius: 0 10px 10px 0;
   background-color: #111;
   border: 2px solid #4630AB;

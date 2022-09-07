@@ -310,7 +310,7 @@ export default {
 }
 .icone-estrela {
   color: #4630ab;
-  scale: 1.5;
+  scale: 1.7;
 }
 /* --------- Footer ------------ */
 .footer {
