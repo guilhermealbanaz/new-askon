@@ -271,9 +271,6 @@ export default {
 .box-resenha:nth-child(even) {
   flex-direction: row-reverse;
 }
-.box-resenha:nth-child(even) .box-texto-resenha {
-  text-align: right; 
-}
 .box-resenha:nth-child(even) .box-estrelas {
   left: 0;
 }
