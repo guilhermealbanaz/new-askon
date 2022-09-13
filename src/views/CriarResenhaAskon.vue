@@ -24,6 +24,9 @@
           </div>
         </div>
       </div>
+      <textarea placeholder="Digitar resenha..." style="resize: none;" name="texto-criar" id="texto-criar" cols="5" rows="55" class="conteudo-criar">
+
+      </textarea>
     </div>
   </div>
 </template>
@@ -62,12 +65,13 @@ export default {
   height: 80%;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  align-items: center;
+  justify-content: space-around;
   background-color: #111;
   border: 2px solid #4630AB;
 }
 .box-criar-resenha {
-  width: 100%;
+  width: 80%;
   height: 250px;
   display: flex;
   gap: 10%;
@@ -123,5 +127,12 @@ export default {
   height: 10px;
   display: flex;
   gap: 20px;
+}
+.conteudo-criar {
+  width: 80%;
+  padding: 10px;
+  background-color: #111;
+  color: #c9c9c9;
+  border: 2px solid #4630AB;
 }
 </style>
