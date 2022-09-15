@@ -47,6 +47,7 @@
             <mdiStar class="icone-estrela-perfil" />
           </div>
           </div>
+
         </div>
         <div class="box-resenhas-perfil">
           <div class="img-resenha-perfil"></div>
