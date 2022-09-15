@@ -48,9 +48,10 @@ export default {
   padding: 0;
 }
 .tudo-criar {
+  top: 0;
   width: 100vw;
   height: 1500px;
-  position: relative;
+  position: absolute;
   background-image: url(../assets/Fundo-gen.png);
   background-position: center;
   background-size: cover;

@@ -84,6 +84,7 @@ export default {
   padding: 0;
 }
 .tudo-individual {
+  top: 0;
   width: 100%;
   height: auto;
   position: absolute ;

@@ -4,7 +4,6 @@ import HomeAskon from "@/views/HomeAskon.vue";
 import CriarResenhaAskon from "@/views/CriarResenhaAskon.vue";
 import AboutAskon from "@/components/AboutAskon.vue";
 import LoginAskon from "@/views/LoginAndRegisterAskon.vue";
-import Resenha from "@/views/IndividualAskon.vue";
 import PerfilAskon from "@/views/PerfilAskon.vue";
 import IndividualAskon from "@/views/IndividualAskon.vue";
 
@@ -21,7 +20,6 @@ const routes = [
       },
       {
         path: "/criar",
-        alias: "/resenha",
         component: CriarResenhaAskon,
         props: true,
       },
@@ -32,13 +30,13 @@ const routes = [
         props: true,
       },
       {
-        path: "/resenha",
-        component: Resenha,
-      },
-      {
         path: "/individual",
         component: IndividualAskon,
-      }
+      },
+      {
+        path: "/perfil",
+        component: PerfilAskon,
+      },
     ],
   },
   {
@@ -49,10 +47,6 @@ const routes = [
       {
         path: "/login",
         component: LoginAskon,
-      },
-      {
-        path: "/perfil",
-        component: PerfilAskon,
       },
     ],
   },

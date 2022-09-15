@@ -3,9 +3,9 @@
     <div class="nav">
       <div class="box-conteudo">
         <div class="logo-nav"></div>
-        <a href="#" class="texto-nav">resenhas</a>
-        <a href="#" class="texto-nav">perfil</a>
-        <a href="#" class="texto-nav">criar</a>
+        <router-link to='/'><a class="texto-nav">resenhas</a></router-link>
+        <router-link to='/perfil'><a class="texto-nav">perfil</a></router-link>
+        <router-link to='/criar'><a class="texto-nav">criar</a></router-link>
       </div>
       <div class="box-lateral">
         <div class="borda-lateral"></div>
@@ -32,8 +32,8 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #111;
   overflow-y: hidden;
+  z-index: 1;
 }
 .nav {
   width: 600px;

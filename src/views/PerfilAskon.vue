@@ -1,11 +1,5 @@
 <template>
-  <div class="tudo-nav">
-    <div class="nav-2">
-        <div class="logo-nav-2"></div>
-        <div class="box-lateral-2">
-          <div class="borda-lateral-2"></div>
-        </div>
-    </div>
+  <div class="tude">
     <div class="container-perfil">
       <div class="box-perfil">
         <div class="icone-perfil"></div>
@@ -88,10 +82,12 @@ export default {
 </script>
 
 <style>
-.tudo-nav {
+.tude {
   width: 100vw;
   height: 100vh;
   background-color: #111;
+  position: absolute;
+  top: 0;
 }
 .nav-2 {
   width: 200px;
@@ -135,7 +131,7 @@ export default {
   height: 85vh;
   position: relative;
   left: 12.5vw;
-  top: -5vh;
+  top: 10vh;
   display: flex;
   gap: 20px;
 }
