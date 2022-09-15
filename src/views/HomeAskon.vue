@@ -270,9 +270,10 @@ export default {
 }
 .box-resenha:nth-child(even) {
   flex-direction: row-reverse;
+  text-align: left;
 }
 .box-resenha:nth-child(even) .box-estrelas {
-  left: 0;
+  right: 31%;
 }
 
 .img-resenha {
@@ -282,7 +283,7 @@ export default {
   border-radius: 10px;
 }
 .box-texto-resenha {
-  width: 800px;
+  width: 80%;
   height: 120px;
   display: flex;
   flex-direction: column;
