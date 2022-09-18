@@ -40,7 +40,7 @@ created(){
           title:'League of Legends Resenha',
           content: 'GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-01-01',
-          img: 'yasuo.jpg',
+          img: 'akali.jpg',
           creator: 'Guilherme',
           generos: 'Ação, ação, ação, ação, ação',
         },{
@@ -48,7 +48,7 @@ created(){
           title:'Elden Ring Resenha',
           content: 'SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-02-03',
-          img: 'elden.jpg',
+          img: 'akali2.jpg',
           creator: 'Rodrigo',
           generos: 'Ação, ação, ação, ação, ação',
         },{
@@ -56,7 +56,7 @@ created(){
           title:'Fortnite resenha',
           content: 'RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-06-04',
-          img: 'akali.jpg',
+          img: 'akali3.jpg',
           creator: 'Guilherme',
           generos: 'Ação, ação, ação, ação, ação',
         }]
@@ -65,5 +65,76 @@ created(){
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+.tudo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #111;
+  overflow-y: scroll;
+}
+.container-resenha {
+  width: 80%;
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  left: 10%;
+  right: 10%;
+  margin-top: 120px;
+}
+.box-resenha {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+.box-resenha:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: left;
+}
+.box-resenha:nth-child(even) .box-estrelas {
+  right: 31%;
+}
 
+.img-resenha {
+  width: 400px;
+  height: 220px;
+  background-color: #4630ab;
+  border-radius: 10px;
+}
+.box-texto-resenha {
+  width: 80%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.titulo {
+  width: 100%;
+  color: #c9c9c9;
+}
+.text-white {
+  color: #c9c9c9;
+  text-align: justify;
+}
+.box-estrelas {
+  width: 200px;
+  position: absolute;
+  right: 0;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.icone-estrela {
+  color: #4630ab;
+  scale: 1.7;
+}
 </style>

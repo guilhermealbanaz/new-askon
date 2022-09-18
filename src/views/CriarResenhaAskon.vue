@@ -1,5 +1,7 @@
 <template>
-  <div class="tudo-criar">
+  <div class="tudo-criar" ref="tudo-criar">
+    <!-- eslint-disable-next-line -->
+    <img :src="require('../assets/' + backgroundatual )" alt=""/>
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
@@ -9,11 +11,12 @@
         <div class="box-texto-criar">
           <input type="text" class="input-criar" placeholder="Título">
           <label class="text-white" for="jogos">Escolha o jogo:</label>
-          <select class="input-jogos-resenha" name="jogos" id="jogo">
-            <option value="darksouls">Dark Souls</option>
-            <option value="fortnite">Fortnite</option>
-            <option value="valorant">Valorant</option>
-            <option value="leagueoflegends">League Of Legends</option>
+          <select class="input-jogos-resenha" name="jogos" id="jogo" v-model='backgroundatual' @change='qualquercoisa'>
+            <option value="default.jpg" selected>Escolha um jogo</option>
+            <option value="akali3.jpg">Dark Souls</option>
+            <option value="fortnite.jpg">Fortnite</option>
+            <option value="valorant.jpg">Valorant</option>
+            <option value="leagueoflegends.jpg">League Of Legends</option>
           </select>
           <div class="box-estrelas-criar">
             <mdiStar class="icone-estrela-perfil" />
@@ -35,11 +38,23 @@
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiFileImagePlus  from "vue-material-design-icons/FileImagePlus.vue";
 export default {
+  data(){
+    return {
+      games: '',
+      backgroundatual: 'default.jpg'
+    }
+  },
   components: {
     mdiStar,
     mdiFileImagePlus,
   },
+  methods:{
+    qualquercoisa(){
+      
+    }
+  }
 };
+
 </script>
 
 <style>
@@ -52,7 +67,7 @@ export default {
   width: 100vw;
   height: 1500px;
   position: absolute;
-  background-image: url(../assets/Fundo-gen.png);
+  background-image: url(../assets/default.jpg);
   background-position: center;
   background-size: cover;
   background-color: #111;

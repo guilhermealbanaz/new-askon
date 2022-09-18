@@ -16,6 +16,7 @@
     "vue-material-design-icons": "^5.1.2",
     "vue-rellax": "^0.2.0",
     "vue-router": "^3.5.1",
+    "vue2-filters": "^0.14.0",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
