@@ -1,7 +1,7 @@
 <template>
   <div class="tudo-criar" ref="tudo-criar">
     <!-- eslint-disable-next-line -->
-    <img :src="require('../assets/' + backgroundatual )" alt=""/>
+    <img class="imagem-fundo" :src="require('../assets/' + backgroundatual )" alt=""/>
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
@@ -74,17 +74,22 @@ export default {
   display: flex;
   justify-content: center;
 }
+.imagem-fundo {
+  min-width: 100%;
+  min-height: 100%;
+}
 .container-criar {
   padding-top: 10px;
-  margin-top: 40px;
+  margin-top: 200px;
   width: 70%;
   height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  background-color: #111;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid #4630AB;
+  position: absolute;
 }
 .box-criar-resenha {
   width: 80%;
@@ -100,7 +105,7 @@ export default {
   justify-content: center;
 }
 .box-img-criar {
-  width: 15%;
+  width: 25%;
   height: 200px;
   background-color: #4630AB;
   border: none;
@@ -123,7 +128,7 @@ export default {
   height: 35px;
   background-color: #111;
   border: none;
-  border-bottom: 1px solid #4630AB;
+  border: 1px solid #4630AB;
   color: #c9c9c9;
   padding-left: 10px;
   font-size: 18px;
