@@ -13,7 +13,7 @@
           <label class="text-white" for="jogos">Escolha o jogo:</label>
           <select class="input-jogos-resenha" name="jogos" id="jogo" v-model='backgroundatual' @change='qualquercoisa'>
             <option value="default.jpg" selected>Escolha um jogo</option>
-            <option value="akali3.jpg">Dark Souls</option>
+            <option value="fundo.jpg">Dark Souls</option>
             <option value="fortnite.jpg">Fortnite</option>
             <option value="valorant.jpg">Valorant</option>
             <option value="leagueoflegends.jpg">League Of Legends</option>
