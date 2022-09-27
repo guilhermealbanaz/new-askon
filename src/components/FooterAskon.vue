@@ -35,7 +35,7 @@ export default {
 .footer {
   width: 100%;
   height: 297px;
-  background-image: linear-gradient(to left,#4630ab 60%, #111);
+  background-color: #4630ab;
   border-top: 1px solid #4630ab;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export default {
 .box-footer{
   height: 10px;
   width: 90%;
-  background-image: linear-gradient(to left,#c9c9c9 0%, #111);
+  background-image: linear-gradient(to left,#c9c9c9 -40%, #111);
   border-radius: 0 50px 50px 0;
 }
 .img-footer {
@@ -71,6 +71,5 @@ export default {
   background-position: center;
   margin: 10px;
   border-radius: 10px;
-  border: 2px solid #4630ab;
 }
 </style>
