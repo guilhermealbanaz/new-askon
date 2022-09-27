@@ -2,24 +2,31 @@
     <div class="footer">
       <div class="linha-footer">
         <div class="img-git"></div>
+        <mdiGithub size="30"/>
         <div class="texto-footer">guilhermealbanaz</div>
       </div>
       <div class="linha-footer">
         <div class="img-git"></div>
+        <mdiGithub size="30"/>
         <div class="texto-footer">RodrigoBonif</div>
       </div>
       <div class="linha-footer">
         <div class="img-git"></div>
+        <mdiGithub size="30"/>
         <div class="texto-footer">marialauraviana</div>
       </div>
-      <div class="linha-footer"></div>
+      <div class="linha-footer">
+        <div class="box-footer"></div>
+        <div class="img-footer"></div>
+      </div>
     </div>
 </template>
 
 <script>
+import mdiGithub from "vue-material-design-icons/Github.vue";
 export default {
   components:{
-    
+    mdiGithub,
   }
 }
 </script>
@@ -27,14 +34,43 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  height: 298px;
-  background-color: rgb(70, 48, 171);
+  height: 297px;
+  background-image: linear-gradient(to left,#4630ab 60%, #111);
+  border-top: 1px solid #4630ab;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 .linha-footer {
   width: 100%;
-  height: 50px;
+  height: 40px;
+  color: #c9c9c9;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+}
+.linha-footer:nth-child(1) {
+  margin-top: 20px;
+}
+.linha-footer:last-child {
+  margin-bottom: 50px;
+}
+.box-footer{
+  height: 10px;
+  width: 90%;
+  background-image: linear-gradient(to left,#c9c9c9 0%, #111);
+  border-radius: 0 50px 50px 0;
+}
+.img-footer {
+  width: 100px;
+  height: 100px;
+  background-image: url(../assets/Logo2.png);
+  background-size: contain;
+  background-position: center;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px solid #4630ab;
 }
 </style>
