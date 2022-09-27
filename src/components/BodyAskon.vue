@@ -145,7 +145,7 @@ created(){
   color: #c9c9c9;
 }
 .text-white {
-  color: #c9c9c9;
+  color: rgb(201, 201, 201);
   text-align: justify;
   margin-top: 10px;
   display: flex;

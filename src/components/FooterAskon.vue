@@ -14,8 +14,8 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  height: 280px;
-  background-color: #4630ab;
+  height: 275px;
+  background-color: rgb(70, 48, 171);
   display: flex;
 }
 </style>
