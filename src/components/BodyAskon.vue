@@ -139,7 +139,6 @@ created(){
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
 }
 .titulo {
   width: 100%;
@@ -148,6 +147,11 @@ created(){
 .text-white {
   color: #c9c9c9;
   text-align: justify;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 10px;
 }
 .box-estrelas {
   width: 200px;
