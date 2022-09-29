@@ -64,7 +64,7 @@ export default {
 }
 .tudo-criar {
   top: 0;
-  width: 100vw;
+  max-width: 100%;
   height: 1500px;
   position: absolute;
   background-image: url(../assets/default.jpg);
@@ -73,6 +73,7 @@ export default {
   background-color: #111;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 .imagem-fundo {
   min-width: 100%;
@@ -80,13 +81,13 @@ export default {
 }
 .container-criar {
   padding-top: 10px;
-  margin-top: 200px;
+  margin-top: 100px;
   width: 70%;
-  height: 80%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid #4630AB;
   position: absolute;

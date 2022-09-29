@@ -3,11 +3,11 @@
     <div class="container-perfil">
       <div class="box-perfil">
         <div class="icone-perfil"></div>
-        <p class="text-white">Nome</p>
-        <p class="text-white">Resenhas</p>
-        <p class="text-white">Mudar Senha</p>
-        <p class="text-white">Alterar Foto</p>
-        <p class="text-white">Sair</p>
+        <p class="text-white-perfil">Nome</p>
+        <p class="text-white-perfil">Resenhas</p>
+        <p class="text-white-perfil">Mudar Senha</p>
+        <p class="text-white-perfil">Alterar Foto</p>
+        <p class="text-white-perfil">Sair</p>
       </div>
       <div class="container-resenhas-perfil">
         <div class="box-resenhas-perfil">
@@ -191,5 +191,9 @@ export default {
 .icone-estrela-perfil {
   color: #4630ab;
   scale: 1.5;
+}
+.text-white-perfil {
+  text-align: center;
+  color: #c9c9c9;
 }
 </style>

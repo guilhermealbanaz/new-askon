@@ -132,6 +132,7 @@ created(){
   height: 220px;
   background-color: #4630ab;
   border-radius: 10px;
+  border: 1px solid #c9c9c9;
 }
 .box-texto-resenha {
   width: 80%;
