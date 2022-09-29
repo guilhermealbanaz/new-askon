@@ -45,12 +45,18 @@ export default {
       <div class="conteudo-resenha text-white">"Jogo muito bom, recomendo muito pra quem gosta do estilo It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes"</div>
       <div class="criador-resenha text-white">Resenha feita por Fulano</div>
       <div class="box-comentario-resenha">
-        <input placeholder="Comentar" type="text" class="comentario-resenha">
+        <input v-model="comentario" placeholder="Insira o seu comentário aqui !" type="text" class="comentario-resenha">
         <div @click="coracao = !coracao" class="box-coracao">
+          <button @click="comentar">KKKK</button>
           <mdiHeartOutline class="icone-curtir" size="50"/> 
           <mdiHeart v-show="coracao" class="icone-curtir" size="50"/> 
         </div>
       </div>
+      <form class="box-comentarios">
+        <div style="color:white" v-for="comentario,index in comentarios" :key="index">
+          {{comentario}}
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -65,8 +71,18 @@ import mdiHeart from "vue-material-design-icons/Heart.vue";
 export default {
    data (){
         return {
+          comentario: '',
+          comentarios: ['Eae','lixo'],
             coracao: false,
         }
+    },
+    methods:{
+      comentar(){
+        if(this.comentario){
+          this.comentarios.push(this.comentario)
+        }
+        this.comentario = ''
+      }
     },
   components: {
     mdiStar,
@@ -107,6 +123,7 @@ export default {
 .titulo-resenha {
   font-size: 35px;
   margin-top: 50px;
+  text-align: center;
 }
 .box-estrelas-resenha {
   width: 200px;
@@ -128,10 +145,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 2px solid #4630ab;
+  padding-top: 50px;
+  font-size: 15px;
 }
 .comentario-resenha {
-  width: 60%;
-  height: 30px;
+  width: 70%;
+  height: 35px;
   border-radius: 0 10px 10px 0;
   background-color: #111;
   border: 2px solid #4630AB;
@@ -146,5 +166,13 @@ export default {
 .icone-curtir {
   position: fixed;
   color: #4630AB
+}
+.box-comentarios {
+  min-width: 70%;
+  height: 100px;
+  box-sizing: border-box;
+  border: 2px solid #4630AB;
+  border-radius: 5px;
+  background-color: #111;
 }
 </style>
