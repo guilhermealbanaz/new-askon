@@ -177,6 +177,9 @@ export default {
   height: 100%;
   position: relative;
 }
+.VueCarousel-dot {
+  background-color: red !important;
+}
 
 
 </style>
