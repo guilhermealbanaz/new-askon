@@ -99,6 +99,7 @@ created(){
   position: relative;
   background-color: #111;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .container-resenha {
   width: 80%;
