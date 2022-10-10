@@ -13,7 +13,7 @@
     </div>
     <input type="text" class="busca" />
     <div class="sair">
-      <mdiDoorOpen size="40" class="icone-sair" />
+      <mdiDoorOpen :size="40" class="icone-sair" />
     </div>
   </div>
 </template>

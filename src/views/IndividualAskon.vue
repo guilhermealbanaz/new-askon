@@ -1,4 +1,4 @@
-<!-- <template>
+ <!-- <template>
   <section>
         <div>
             <ResenhasAskon
@@ -18,38 +18,30 @@
             </ResenhasAskon>
         </div>
   </section>
-</template>
-
-<script>
-import ResenhasAskon from "@/components/ResenhasAskon.vue";
-export default {
-  components: { ResenhasAskon },
-  
-};
-</script>
-
-<style></style> -->
+</template> -->
 
 <template>
   <div class="tudo-individual">
     <div class="container-resenha-individual" v-rellax="{speed: 10}">
-      <div class="titulo-resenha text-white">Dark Souls Resenha
-      </div>
-      <div class="box-estrelas-resenha">
-            <mdiStar class="icone-estrela" />
-            <mdiStar class="icone-estrela" />
-            <mdiStar class="icone-estrela" />
-            <mdiStar class="icone-estrela" />
-            <mdiStar class="icone-estrela" />
-          </div>
-      <div class="conteudo-resenha text-white">"Jogo muito bom, recomendo muito pra quem gosta do estilo It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes o purposes"</div>
-      <div class="criador-resenha text-white">Resenha feita por Fulano</div>
-      <div class="box-comentario-resenha">
+    <ResenhasAskon id="individual" 
+    :key="resenha.id" class="vermelho"
+    :ImgName="resenha.img"
+    :ResenhaTitles="resenha.title"
+    :ResenhaDate="resenha.date">
+    <div class="conteudo-resenha text-white">{{ resenha.content }}</div>
+                <template v-slot:criador>
+                    <p class="criador-resenha text-white">{{ resenha.creator }}</p>
+                </template>
+                <template v-slot:generos>
+                    <p class="generos">{{ resenha.gen }}</p>
+                </template>
+  </ResenhasAskon>
+          <div class="box-comentario-resenha">
         <input v-model="comentario" placeholder="Insira o seu comentário aqui !" type="text" class="comentario-resenha">
         <div @click="coracao = !coracao" class="box-coracao">
           <button @click="comentar">KKKK</button>
-          <mdiHeartOutline class="icone-curtir" size="50"/> 
-          <mdiHeart v-show="coracao" class="icone-curtir" size="50"/> 
+          <mdiHeartOutline class="icone-curtir" :size="50"/> 
+          <mdiHeart v-show="coracao" class="icone-curtir" :size="50"/> 
         </div>
       </div>
       <form class="box-comentarios">
@@ -58,7 +50,7 @@ export default {
         </div>
       </form>
     </div>
-  </div>
+    </div>
 </template>
 
 <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=WeakMap"></script>
@@ -68,7 +60,15 @@ import mdiGithub  from "vue-material-design-icons/Github.vue";
 import mdiLinkedin   from "vue-material-design-icons/Linkedin.vue";
 import mdiHeartOutline    from "vue-material-design-icons/HeartOutline.vue";
 import mdiHeart from "vue-material-design-icons/Heart.vue";
+import ResenhasAskon from "@/components/ResenhasAskon.vue";
 export default {
+  components: {ResenhasAskon,
+    mdiStar,
+    mdiGithub, 
+    mdiLinkedin,
+    mdiHeartOutline,
+    mdiHeart, },
+  props:['resenha'],
    data (){
         return {
           comentario: '',
@@ -84,13 +84,6 @@ export default {
         this.comentario = ''
       }
     },
-  components: {
-    mdiStar,
-    mdiGithub, 
-    mdiLinkedin,
-    mdiHeartOutline,
-    mdiHeart, 
-  },
 }
 </script>
 

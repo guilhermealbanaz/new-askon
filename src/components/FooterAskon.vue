@@ -2,17 +2,17 @@
     <div class="footer">
       <div class="linha-footer">
         <div class="img-git"></div>
-        <mdiGithub size="30"/>
+        <mdiGithub :size="30"/>
         <div class="texto-footer">guilhermealbanaz</div>
       </div>
       <div class="linha-footer">
         <div class="img-git"></div>
-        <mdiGithub size="30"/>
+        <mdiGithub :size="30"/>
         <div class="texto-footer">RodrigoBonif</div>
       </div>
       <div class="linha-footer">
         <div class="img-git"></div>
-        <mdiGithub size="30"/>
+        <mdiGithub :size="30"/>
         <div class="texto-footer">marialauraviana</div>
       </div>
       <div class="linha-footer">
