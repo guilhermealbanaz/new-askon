@@ -17,13 +17,15 @@
             <p>{{ resenha.generos }}</p>
         </template>
       </ResenhasAskon>
+      <FooterAskon/>
     </section>
 </template>
 
 <script>
+import FooterAskon from '@/components/FooterAskon'
 import ResenhasAskon from '@/components/ResenhasAskon'
 export default {
-    components: {ResenhasAskon},
+    components: {ResenhasAskon, FooterAskon},
     data(){
         return {
             resenhas: []

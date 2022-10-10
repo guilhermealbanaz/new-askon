@@ -34,7 +34,7 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  height: 30%;
+  height: 19.5%;
   position: absolute;
   background-color: #4630ab;
   display: flex;

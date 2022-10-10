@@ -159,23 +159,17 @@ export default {
   },
   data(){
     return {
-      imagensTopicos: [require('@/assets/akali.jpg'), require('@/assets/akali2.jpg'), require('@/assets/akali3.jpg')] 
+      imagensTopicos: [require('@/assets/fundo1(slide).jpg'), require('@/assets/fundo2(slide).jpg'), require('@/assets/fundo3(slide).jpg'), require('@/assets/fundo4(slide).jpg')] 
     }
   }
 };
 </script>
 <style>
-.carrossel{
-  position: relative;
-  height: 700px;
-}
 .VueCarousel{
-  height: 700px;
+  height: 800px;
 }
 .VueCarousel img {
   width: 100%;
-  height: 100%;
-  position: relative;
 }
 .VueCarousel-dot {
   clip-path: polygon(50% 15%, 58% 38%, 84% 38%, 63% 56%, 71% 80%, 50% 66%, 30% 80%, 38% 55%, 18% 38%, 42% 39%);
