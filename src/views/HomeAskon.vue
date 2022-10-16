@@ -170,10 +170,14 @@ export default {
 }
 .VueCarousel img {
   width: 100%;
+  max-height: 800px;
 }
 .VueCarousel-dot {
   clip-path: polygon(50% 15%, 58% 38%, 84% 38%, 63% 56%, 71% 80%, 50% 66%, 30% 80%, 38% 55%, 18% 38%, 42% 39%);
   border-radius: 0px !important;
   background-color: aqua;
+}
+.VueCarousel-navigation-button {
+  display: none;
 }
 </style>

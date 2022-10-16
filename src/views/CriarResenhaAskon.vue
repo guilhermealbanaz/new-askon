@@ -30,6 +30,7 @@
       <textarea placeholder="Digitar resenha..." style="resize: none;" name="texto-criar" id="texto-criar" cols="5" rows="55" class="conteudo-criar">
 
       </textarea>
+      <div class="publicar-resenha">Publicar</div>
     </div>
   </div>
 </template>
@@ -156,5 +157,22 @@ export default {
   background-color: #111;
   color: #c9c9c9;
   border: 2px solid #4630AB;
+}
+.publicar-resenha {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin: 20px;
+  background-color: #4630AB;
+  transition: 0.2s all ease-out;
+}
+.publicar-resenha:hover{
+  background-color: #111;
+  color: #c9c9c9;
+  scale: 1.1;
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ResenhasAskon
+        <ResenhasAskon class='vermelho'
         v-for="resenha in resenhas"
         :key="resenha.id"
         :ImgName="resenha.img"
@@ -66,7 +66,7 @@ created(){
 }
 </script>
 
-<style>
+<style >
 * {
   margin: 0;
   padding: 0;
@@ -76,8 +76,6 @@ created(){
   height: 100%;
   position: relative;
   background-color: #111;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 .container-resenha {
   width: 80%;
