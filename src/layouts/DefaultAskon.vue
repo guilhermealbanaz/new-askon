@@ -17,4 +17,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.door-open-icon {
+  scale: 1.1;
+}
+</style>

@@ -149,10 +149,10 @@ export default {
 .input-login {
   width: 420px;
   height: 60px;
-  background-color: #111;
+  background-color: #111 !important;
   border: none;
   font-size: 18px;
-  color: #C9C9C9;
+  color: #C9C9C9 !important;
   outline: 0;
   transition: all 0.3s ease-in-out;
 }

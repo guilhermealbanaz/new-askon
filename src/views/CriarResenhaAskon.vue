@@ -12,9 +12,9 @@
           <input type="text" class="input-criar" placeholder="Título">
           <label class="text-white" for="jogos">Escolha o jogo:</label>
           <select class="input-jogos-resenha" name="jogos" id="jogo" v-model='backgroundatual' @change='qualquercoisa'>
-            <option value="default.jpg" selected>Escolha um jogo</option>
+            <option value="default.jpg" selected> Jogo selecionado</option>
             <option value="fundo.jpg">Dark Souls</option>
-            <option value="fortnite.jpg">Fortnite</option>
+            <option value="Elden.jpg">Elden Ring</option>
             <option value="valorant.jpg">Valorant</option>
             <option value="leagueoflegends.jpg">League Of Legends</option>
           </select>
@@ -66,7 +66,7 @@ export default {
 .tudo-criar {
   top: 0;
   max-width: 100%;
-  height: 1500px;
+  height: 1200px;
   position: absolute;
   background-image: url(../assets/default.jpg);
   background-position: center;
@@ -83,8 +83,8 @@ export default {
 .container-criar {
   padding-top: 10px;
   margin-top: 100px;
-  width: 70%;
-  height: 90%;
+  width: 60%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,6 +157,7 @@ export default {
   background-color: #111;
   color: #c9c9c9;
   border: 2px solid #4630AB;
+  margin-top: 50px;
 }
 .publicar-resenha {
   width: 200px;
