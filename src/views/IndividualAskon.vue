@@ -24,8 +24,8 @@
   <div class="tudo-individual">
     <div class="container-resenha-individual" v-rellax="{speed: 10}">
     <ResenhasAskon id="individual" 
-    :key="resenha.id" class="vermelho"
-    :ImgName="resenha.img"
+    :key="resenha.id"
+    :ImgName="resenha.img" 
     :ResenhaTitles="resenha.title"
     :ResenhaDate="resenha.date">
     <div class="conteudo-resenha text-white">{{ resenha.content }}</div>
@@ -38,8 +38,8 @@
   </ResenhasAskon>
           <div class="box-comentario-resenha">
         <input v-model="comentario" placeholder="Insira o seu comentário aqui !" type="text" class="comentario-resenha">
+        <button  class="btn-comentar" @click="comentar">Publicar</button>
         <div @click="coracao = !coracao" class="box-coracao">
-          <button @click="comentar">KKKK</button>
           <mdiHeartOutline class="icone-curtir" :size="50"/> 
           <mdiHeart v-show="coracao" class="icone-curtir" :size="50"/> 
         </div>
@@ -87,7 +87,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 * {
   margin: 0;
   padding: 0;
@@ -167,5 +168,17 @@ export default {
   border: 2px solid #4630AB;
   border-radius: 5px;
   background-color: #111;
+}
+.btn-comentar {
+  width: 80px;
+  height: 30px;
+  background-color: #4630AB;
+  color: #c9c9c9;
+  border-radius: 10px;
+}
+.btn-comentar:hover {
+  background-color: #111;
+  border: 1px solid #4630AB;
+  cursor: pointer;
 }
 </style>
