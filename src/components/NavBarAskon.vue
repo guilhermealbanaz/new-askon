@@ -12,17 +12,21 @@
       </div>
     </div>
     <input type="text" class="busca" />
-    <div class="sair">
+    <div  @click="logout" class="sair">
       <mdiDoorOpen :size="40" class="icone-sair" />
     </div>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import mdiDoorOpen from "vue-material-design-icons/DoorOpen.vue";
 export default {
   components: {
     mdiDoorOpen,
+  },
+  methods:{
+    ...mapActions('auth',['logout'])
   },
 };
 </script>

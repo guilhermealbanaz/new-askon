@@ -6,6 +6,9 @@ import router from "./router";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import VueRellax from 'vue-rellax';
+import vuetify from './plugins/vuetify'
+import store from './store'
+import './plugins/axios'
 
 Vue.config.productionTip = false;
 Vue.use(VueRellax)
@@ -14,8 +17,13 @@ Vue.use(VueCarousel);
 
 new Vue({
   router,
+  store,
+  vuetify,
   render: (h) => h(App),
+  
+  
+
   mounted(){
     AOS.init()
-  },
+  }
 }).$mount("#app");

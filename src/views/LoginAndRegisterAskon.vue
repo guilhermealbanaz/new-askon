@@ -1,6 +1,5 @@
 <template>
   <div class="tudo">
-    <transition name='fade-login' mode="in-out">
         <div>
           <div>
             <div :class="action == 'login' ? 'direita' : 'esquerda'">
@@ -8,17 +7,16 @@
             </div>
           </div>
             <div v-if="action == 'login'" class="login" key="login">
-            <form method="post">
               <div class="container-login">
                 <div class="img-login"></div>
-                <input type="text" class="input-login" placeholder="Nome">
-                <input type="text" class="input-login" placeholder="Senha">
+                <input  v-model='usuario.username' type="text" class="input-login" placeholder="Nome">
+                <input v-model='usuario.password' :append-icon="mostrarSenha ? 'mdi-eye-off' : 'mdi-eye'" :type="mostrarSenha ? 'text' :  'password'" class="input-login" placeholder="Senha"  @click:append='mostrarSenha = !mostrarSenha'>
                 <p class="sub-texto" @click.prevent="action = 'recuperar'">esqueci minha senha</p>
-                <button class="btn-login">Entrar</button>
+                <button class="btn-login" @click='SubmitLogin'>Entrar</button>
                 <p class="sub-texto">Novo no site?</p>
                 <button class="btn-login" @click.prevent="ChangeAction('registrar')">Registrar</button>
-              </div>
-            </form>  
+                
+              </div> 
           </div>
           
           
@@ -28,7 +26,7 @@
               <div class="img-login"></div>
               <input type="text" class="input-login" placeholder="Email">
               <input type="text" class="input-login" placeholder="Nome de Usuário">
-              <input type="text" class="input-login" placeholder="Senha">
+              <input :append-icon="mostrarSenha ? 'mdi-eye-off' : 'mdi-eye'" :type="mostrarSenha ? 'text' :  'password'" class="input-login" placeholder="Senha"  @click:append='mostrarSenha = !mostrarSenha'>
               <input type="text" class="input-login" placeholder="Confirmar Senha">
               <button class="btn-login" @click.prevent="ChangeAction('login')">Registrar</button>
             </div>
@@ -37,7 +35,6 @@
 
 
         <div class="recuperar" v-if="action == 'recuperar'" key="recuperar">
-          <form method="post">
             <div class="box-recuperar">
                 <div class="img-login"></div>
                 <div class="box-texto-recuperar" >
@@ -49,25 +46,47 @@
                     <button class="btn-login" @click.prevent="ChangeAction('login')">Entrar</button>
                 </div>
               </div>
-          </form>
         </div>
       </div>
-    </transition>
+      <v-snackbar v-model='loginMessage' timeout='2000' :color='loginColor'>{{loginText}}
+        <template v-slot:action='{attrs}'>
+          <v-btn color=black text v-bind='attrs' @click='loginMessage=false'>Fechar</v-btn>
+        </template>
+      </v-snackbar>
   </div>
 </template>
 
 <script>
+import {mapActions } from 'vuex'
 export default {
     data (){
         return {
             action: 'login',
-            
+            mostrarSenha: false,
+            usuario: {},
+            loginMessage: false,
+            loginText:'',
+            loginColor:'success' 
         }
     },
     methods:{
+      ...mapActions('auth',['login']),
+      async SubmitLogin(){
+        try {
+          await this.login(this.usuario)
+          this.loginMessage = true
+          this.loginText= 'Login realizado com sucesso'
+          this.loginColor='success'
+          this.$router.push({ name: 'Home'})
+        } catch(e) {
+            this.loginMessage= true
+            this.loginText = 'Falha de autenticação'
+            this.loginColor= 'error'
+        }
+      },
       ChangeAction(action){
         this.action = action;
-    }
+    },
     }
 };
 </script>

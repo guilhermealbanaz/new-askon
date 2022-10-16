@@ -1,5 +1,8 @@
 <template>
     <section>
+      <div class='loggedin' style="color:white">
+      logado: {{ loggedIn}}
+      </div>
         <ResenhasAskon
         v-for="resenha in resenhas"
         :key="resenha.id"
@@ -24,11 +27,16 @@
 <script>
 import FooterAskon from '@/components/FooterAskon'
 import ResenhasAskon from '@/components/ResenhasAskon'
+import { mapState } from 'vuex'
 export default {
     components: {ResenhasAskon, FooterAskon},
+    computed:{
+    ...mapState('auth', ['loggedIn'])
+    },
     data(){
         return {
             resenhas: []
+            
     }
 },
     methods:{
