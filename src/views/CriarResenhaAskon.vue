@@ -1,35 +1,53 @@
 <template>
   <div class="tudo-criar" ref="tudo-criar">
     <!-- eslint-disable-next-line -->
-    <img class="imagem-fundo" :src="require('../assets/' + backgroundatual )" alt=""/>
+    <img
+      class="imagem-fundo"
+      :src="require('../assets/' + backgroundatual)"
+      alt=""
+    />
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
-        <input type="file" name="image" id="image" class="box-img-criar">
-        <label for="image" class="box-img-criar"><mdiFileImagePlus :size="50"/></label>
+          <input type="file" name="image" id="image" class="box-img-criar" />
+          <label for="image" class="box-img-criar"
+            ><mdiFileImagePlus :size="50"
+          /></label>
         </div>
         <div class="box-texto-criar">
-          <input type="text" class="input-criar" placeholder="Título">
+          <input type="text" class="input-criar" placeholder="Título" />
           <label class="text-white" for="jogos">Escolha o jogo:</label>
-          <select class="input-jogos-resenha" name="jogos" id="jogo" v-model='backgroundatual' @change='qualquercoisa'>
-            <option value="default.jpg" selected> Jogo selecionado</option>
+          <select
+            class="input-jogos-resenha"
+            name="jogos"
+            id="jogo"
+            v-model="backgroundatual"
+            @change="qualquercoisa"
+          >
+            <option value="default.jpg" selected>Jogo selecionado</option>
             <option value="fundo.jpg">Dark Souls</option>
             <option value="Elden.jpg">Elden Ring</option>
             <option value="valorant.jpg">Valorant</option>
             <option value="leagueoflegends.jpg">League Of Legends</option>
           </select>
-          
         </div>
       </div>
-      <textarea placeholder="Digitar resenha..." style="resize: none;" name="texto-criar" id="texto-criar" cols="5" rows="55" class="conteudo-criar">
-
+      <textarea
+        placeholder="Digitar resenha..."
+        style="resize: none"
+        name="texto-criar"
+        id="texto-criar"
+        cols="5"
+        rows="55"
+        class="conteudo-criar"
+      >
       </textarea>
       <v-rating
-            class='rating'
-            v-model="rating"
-            background-color="orange lighten-3"
-            color="orange"
-            large
+        class="rating"
+        v-model="rating"
+        background-color="orange lighten-3"
+        color="orange"
+        large
       ></v-rating>
       <div class="publicar-resenha">Publicar</div>
     </div>
@@ -38,26 +56,23 @@
 
 <script>
 import mdiStar from "vue-material-design-icons/Star.vue";
-import mdiFileImagePlus  from "vue-material-design-icons/FileImagePlus.vue";
+import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
 export default {
-  data(){
+  data() {
     return {
       rating: 4,
-      games: '',
-      backgroundatual: 'default.jpg'
-    }
+      games: "",
+      backgroundatual: "default.jpg",
+    };
   },
   components: {
     mdiStar,
     mdiFileImagePlus,
   },
-  methods:{
-    qualquercoisa(){
-      
-    }
-  }
+  methods: {
+    qualquercoisa() {},
+  },
 };
-
 </script>
 
 <style>
@@ -65,7 +80,7 @@ export default {
   margin: 0;
   padding: 0;
 }
-.rating{
+.rating {
   z-index: 1;
 }
 .tudo-criar {
@@ -95,7 +110,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid #4630AB;
+  border: 2px solid #4630ab;
   position: absolute;
 }
 .box-criar-resenha {
@@ -114,7 +129,7 @@ export default {
 .box-img-criar {
   width: 25%;
   height: 200px;
-  background-color: #4630AB;
+  background-color: #4630ab;
   border: none;
   position: absolute;
   display: flex;
@@ -135,7 +150,7 @@ export default {
   height: 35px;
   background-color: #111;
   border: none;
-  border: 1px solid #4630AB;
+  border: 1px solid #4630ab;
   color: #c9c9c9;
   padding-left: 10px;
   font-size: 18px;
@@ -144,7 +159,7 @@ export default {
   width: 50%;
   height: 40px;
   background-color: #111;
-  border: 1px solid #4630AB;
+  border: 1px solid #4630ab;
   color: #c9c9c9;
 }
 .input-jogos-resenha option {
@@ -161,7 +176,7 @@ export default {
   padding: 10px;
   background-color: #111;
   color: #c9c9c9;
-  border: 2px solid #4630AB;
+  border: 2px solid #4630ab;
   margin-top: 50px;
 }
 .publicar-resenha {
@@ -172,10 +187,10 @@ export default {
   justify-content: center;
   border-radius: 20px;
   margin: 20px;
-  background-color: #4630AB;
+  background-color: #4630ab;
   transition: 0.2s all ease-out;
 }
-.publicar-resenha:hover{
+.publicar-resenha:hover {
   background-color: #111;
   color: #c9c9c9;
   scale: 1.1;
