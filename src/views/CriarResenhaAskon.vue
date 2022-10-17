@@ -118,6 +118,7 @@ export default {
   height: 250px;
   display: flex;
   gap: 10%;
+  margin-top: 20px;
 }
 .box-img-resenha-criar {
   width: 300px;
@@ -181,7 +182,7 @@ export default {
 }
 .publicar-resenha {
   width: 200px;
-  height: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
