@@ -35,8 +35,7 @@ export default {
     },
     data(){
         return {
-            resenhas: []
-            
+            resenhas: [] 
     }
 },
     methods:{

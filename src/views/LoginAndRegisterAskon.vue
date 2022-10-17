@@ -19,18 +19,17 @@
               </div> 
           </div>
           
-          
         <div class="registrar" v-if="action == 'registrar'" key="registrar">
-          <form method="post">
+      
             <div class="container-registrar">
               <div class="img-login"></div>
               <input type="text" class="input-login" placeholder="Email">
-              <input type="text" class="input-login" placeholder="Nome de Usuário">
-              <input :append-icon="mostrarSenha ? 'mdi-eye-off' : 'mdi-eye'" :type="mostrarSenha ? 'text' :  'password'" class="input-login" placeholder="Senha"  @click:append='mostrarSenha = !mostrarSenha'>
+              <input v-model='usuario.username' type="text" class="input-login" placeholder="Nome de Usuário">
+              <input v-model='usuario.password' :append-icon="mostrarSenha ? 'mdi-eye-off' : 'mdi-eye'" :type="mostrarSenha ? 'text' :  'password'" class="input-login" placeholder="Senha"  @click:append='mostrarSenha = !mostrarSenha'>
               <input type="text" class="input-login" placeholder="Confirmar Senha">
-              <button class="btn-login" @click.prevent="ChangeAction('login')">Registrar</button>
+              <button class="btn-login" @click='submitRegister'>Registrar</button>
             </div>
-          </form>
+        
         </div>
 
 
@@ -57,6 +56,7 @@
 </template>
 
 <script>
+import  AuthService  from '@/api/auth'
 import {mapActions } from 'vuex'
 export default {
     data (){
@@ -87,6 +87,10 @@ export default {
       ChangeAction(action){
         this.action = action;
     },
+      async submitRegister(){
+        const error =  await AuthService.register(this.usuario)
+        console.log(error)
+    }
     }
 };
 </script>

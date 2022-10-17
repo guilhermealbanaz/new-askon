@@ -6,7 +6,7 @@
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
         <input type="file" name="image" id="image" class="box-img-criar">
-        <label for="image" class="box-img-criar"><mdiFileImagePlus size="50"/></label>
+        <label for="image" class="box-img-criar"><mdiFileImagePlus :size="50"/></label>
         </div>
         <div class="box-texto-criar">
           <input type="text" class="input-criar" placeholder="Título">
@@ -18,18 +18,19 @@
             <option value="valorant.jpg">Valorant</option>
             <option value="leagueoflegends.jpg">League Of Legends</option>
           </select>
-          <div class="box-estrelas-criar">
-            <mdiStar class="icone-estrela-perfil" />
-            <mdiStar class="icone-estrela-perfil" />
-            <mdiStar class="icone-estrela-perfil" />
-            <mdiStar class="icone-estrela-perfil" />
-            <mdiStar class="icone-estrela-perfil" />
-          </div>
+          
         </div>
       </div>
       <textarea placeholder="Digitar resenha..." style="resize: none;" name="texto-criar" id="texto-criar" cols="5" rows="55" class="conteudo-criar">
 
       </textarea>
+      <v-rating
+            class='rating'
+            v-model="rating"
+            background-color="orange lighten-3"
+            color="orange"
+            large
+      ></v-rating>
       <div class="publicar-resenha">Publicar</div>
     </div>
   </div>
@@ -41,6 +42,7 @@ import mdiFileImagePlus  from "vue-material-design-icons/FileImagePlus.vue";
 export default {
   data(){
     return {
+      rating: 4,
       games: '',
       backgroundatual: 'default.jpg'
     }
@@ -62,6 +64,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+.rating{
+  z-index: 1;
 }
 .tudo-criar {
   top: 0;
