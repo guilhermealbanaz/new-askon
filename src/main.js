@@ -10,6 +10,7 @@ import vuetify from './plugins/vuetify'
 import store from './store'
 import './plugins/axios'
 
+
 Vue.config.productionTip = false;
 Vue.use(VueRellax)
 Vue.use(Vue2Filters)

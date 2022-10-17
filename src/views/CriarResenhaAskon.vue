@@ -42,13 +42,7 @@
         class="conteudo-criar"
       >
       </textarea>
-      <v-rating
-        class="rating"
-        v-model="rating"
-        background-color="orange lighten-3"
-        color="orange"
-        large
-      ></v-rating>
+      <star-rating class='estrelas-criar' :animate="true" :active-color="['#9485de','#9485de','#7c68de','#6f59de','#4630ab']" :active-border-color="['#F6546A','#a8c3c0']" :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"  v-model="boundRating" ></star-rating>
       <div class="publicar-resenha">Publicar</div>
     </div>
   </div>
@@ -57,10 +51,11 @@
 <script>
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
+import StarRating from 'vue-star-rating'
 export default {
   data() {
     return {
-      rating: 4,
+      boundRating : 5,
       games: "",
       backgroundatual: "default.jpg",
     };
@@ -68,14 +63,19 @@ export default {
   components: {
     mdiStar,
     mdiFileImagePlus,
-  },
-  methods: {
-    qualquercoisa() {},
+    StarRating,
   },
 };
 </script>
 
 <style>
+.estrelas-criar{
+  margin: 15px;
+}
+
+.vue-star-rating-rating-text[data-v-fde73a0c] {
+    display: none;
+}
 * {
   margin: 0;
   padding: 0;
@@ -101,6 +101,7 @@ export default {
   min-height: 100%;
 }
 .container-criar {
+  border-radius: 20px;
   padding-top: 10px;
   margin-top: 100px;
   width: 60%;
@@ -146,6 +147,7 @@ export default {
   margin-right: 10px;
 }
 .input-criar {
+  border-radius: 5px;
   width: 70%;
   height: 35px;
   background-color: #111;
@@ -156,6 +158,7 @@ export default {
   font-size: 18px;
 }
 .input-jogos-resenha {
+  border-radius: 5px;
   width: 50%;
   height: 40px;
   background-color: #111;

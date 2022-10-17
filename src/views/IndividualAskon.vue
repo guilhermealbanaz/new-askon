@@ -72,7 +72,7 @@ export default {
    data (){
         return {
           comentario: '',
-          comentarios: ['Eae','lixo'],
+          comentarios: [' muito daora a resenha',' não gostei!'],
             coracao: false,
         }
     },

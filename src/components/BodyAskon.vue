@@ -46,7 +46,7 @@ export default {
 created(){
         this.resenhas = [{
           id:1,
-          title:'League of Legends Resenha',
+          title:'LEAGUE OF LEGENDS RESENHA',
           content: 'GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-01-01',
           img: 'akali.jpg',
@@ -54,7 +54,7 @@ created(){
           generos: 'Ação, ação, ação, ação, ação',
         },{
           id:2,
-          title:'Elden Ring Resenha',
+          title:'ELDEN RING RESENHA',
           content: 'SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-02-03',
           img: 'akali2.jpg',
@@ -62,7 +62,7 @@ created(){
           generos: 'Ação, ação, ação, ação, ação',
         },{
           id:3,
-          title:'Fortnite resenha',
+          title:'FORTNITE RESENHA',
           content: 'RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
           date:'2020-06-04',
           img: 'akali3.jpg',
@@ -112,10 +112,11 @@ created(){
 }
 
 .img-resenha {
+
   width: 400px;
   height: 220px;
   background-color: #4630ab;
-  border-radius: 10px;
+  border-radius: 31px;
   border: 1px solid #c9c9c9;
 }
 .box-texto-resenha {
@@ -128,6 +129,7 @@ created(){
 .titulo {
   width: 100%;
   color: #c9c9c9;
+  font-style: italic;
 }
 .text-white {
   color: rgb(201, 201, 201);
@@ -137,6 +139,7 @@ created(){
   flex-direction: column;
   width: 70%;
   gap: 10px;
+  
 }
 .box-estrelas {
   width: 200px;
