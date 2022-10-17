@@ -118,12 +118,12 @@ export default {
         await this.login(this.usuario);
         this.loginMessage = true;
         this.loginText = "Login realizado com sucesso";
-        this.loginColor = "success";
+        this.loginColor = "green";
         this.$router.push({ name: "Home" });
       } catch (e) {
         this.loginMessage = true;
         this.loginText = "Falha de autenticação";
-        this.loginColor = "error";
+        this.loginColor = "red";
       }
     },
     ChangeAction(action) {

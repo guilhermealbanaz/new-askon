@@ -22,6 +22,7 @@ const routes = [
         component: HomeAskon,
       },
       {
+        name: 'Criar',
         path: "/criar",
         component: CriarResenhaAskon,
         props: true,
@@ -33,6 +34,7 @@ const routes = [
         props: true,
       },
       {
+        name: 'Perfil',
         path: "/perfil",
         component: PerfilAskon,
       },

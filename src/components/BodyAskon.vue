@@ -1,79 +1,98 @@
 <template>
-    <section>
-      <div class='loggedin' style="color:white">
-      logado: {{ loggedIn}}
-      </div>
-        <ResenhasAskon
-        v-for="resenha in resenhas"
-        :key="resenha.id"
-        :ImgName="resenha.img"
-        :ResenhaTitles="resenha.title"
-        :ResenhaDate="resenha.date"
-      >
-        <template v-slot:default>
-          <p @click="irParaResenha(resenha)">{{ resenha.content | truncate(200) }}</p>
-        </template>
-        <template v-slot:criador>
-            <p>{{ resenha.creator }}</p>
-        </template>
-        <template v-slot:generos>
-            <p>{{ resenha.generos }}</p>
-        </template>
-      </ResenhasAskon>
-      <FooterAskon/>
-    </section>
+  <section>
+    <div class="fade"></div>
+    <div class="loggedin" style="color: white">logado: {{ loggedIn }}</div>
+    <ResenhasAskon
+      v-for="resenha in resenhas"
+      :key="resenha.id"
+      :ImgName="resenha.img"
+      :ResenhaTitles="resenha.title"
+      :ResenhaDate="resenha.date"
+    >
+      <template v-slot:default>
+        <p @click="irParaResenha(resenha)">
+          {{ resenha.content | truncate(200) }}
+        </p>
+      </template>
+      <template v-slot:criador>
+        <p>{{ resenha.creator }}</p>
+      </template>
+      <template v-slot:generos>
+        <p>{{ resenha.generos }}</p>
+      </template>
+    </ResenhasAskon>
+    <FooterAskon />
+  </section>
 </template>
 
 <script>
-import FooterAskon from '@/components/FooterAskon'
-import ResenhasAskon from '@/components/ResenhasAskon'
-import { mapState } from 'vuex'
+import FooterAskon from "@/components/FooterAskon";
+import ResenhasAskon from "@/components/ResenhasAskon";
+import { mapState } from "vuex";
 export default {
-    components: {ResenhasAskon, FooterAskon},
-    computed:{
-    ...mapState('auth', ['loggedIn'])
+  components: { ResenhasAskon, FooterAskon },
+  computed: {
+    ...mapState("auth", ["loggedIn"]),
+  },
+  data() {
+    return {
+      resenhas: [],
+    };
+  },
+  methods: {
+    irParaResenha(resenha) {
+      this.$router.push({
+        name: "Template",
+        params: { resenha, id: resenha.id },
+      });
     },
-    data(){
-        return {
-            resenhas: [] 
-    }
-},
-    methods:{
-      irParaResenha(resenha){
-      this.$router.push({name:"Template", params: {resenha, id:resenha.id}})
-    },
-    },
-created(){
-        this.resenhas = [{
-          id:1,
-          title:'LEAGUE OF LEGENDS RESENHA',
-          content: 'GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
-          date:'2020-01-01',
-          img: 'akali.jpg',
-          creator: 'Guilherme',
-          generos: 'Ação, ação, ação, ação, ação',
-        },{
-          id:2,
-          title:'ELDEN RING RESENHA',
-          content: 'SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
-          date:'2020-02-03',
-          img: 'akali2.jpg',
-          creator: 'Rodrigo',
-          generos: 'Ação, ação, ação, ação, ação',
-        },{
-          id:3,
-          title:'FORTNITE RESENHA',
-          content: 'RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.',
-          date:'2020-06-04',
-          img: 'akali3.jpg',
-          creator: 'Guilherme',
-          generos: 'Ação, ação, ação, ação, ação',
-        }]
+  },
+  created() {
+    this.resenhas = [
+      {
+        id: 1,
+        title: "LEAGUE OF LEGENDS RESENHA",
+        content:
+          "GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+        date: "2020-01-01",
+        img: "akali.jpg",
+        creator: "Guilherme",
+        generos: "Ação, ação, ação, ação, ação",
       },
-}
+      {
+        id: 2,
+        title: "ELDEN RING RESENHA",
+        content:
+          "SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+        date: "2020-02-03",
+        img: "akali2.jpg",
+        creator: "Rodrigo",
+        generos: "Ação, ação, ação, ação, ação",
+      },
+      {
+        id: 3,
+        title: "FORTNITE RESENHA",
+        content:
+          "RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+        date: "2020-06-04",
+        img: "akali3.jpg",
+        creator: "Guilherme",
+        generos: "Ação, ação, ação, ação, ação",
+      },
+    ];
+  },
+};
 </script>
 
 <style >
+.fade {
+  height: 100px;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), #111);
+  top: 600px;
+  position: absolute;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -112,7 +131,6 @@ created(){
 }
 
 .img-resenha {
-
   width: 400px;
   height: 220px;
   background-color: #4630ab;
@@ -139,7 +157,6 @@ created(){
   flex-direction: column;
   width: 70%;
   gap: 10px;
-  
 }
 .box-estrelas {
   width: 200px;
