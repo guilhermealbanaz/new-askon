@@ -3,30 +3,30 @@
     <div class="nav">
       <div class="box-conteudo">
         <div class="logo-nav"></div>
-        <router-link to='/'><a class="texto-nav">resenhas</a></router-link>
-        <router-link to='/perfil'><a class="texto-nav">perfil</a></router-link>
-        <router-link to='/criar'><a class="texto-nav">criar</a></router-link>
+        <router-link to="/"><a class="texto-nav">resenhas</a></router-link>
+        <router-link to="/perfil"><a class="texto-nav">perfil</a></router-link>
+        <router-link to="/criar"><a class="texto-nav">criar</a></router-link>
       </div>
       <div class="box-lateral">
         <div class="borda-lateral"></div>
       </div>
     </div>
     <input type="text" class="busca" />
-    <div  @click="logout" class="sair">
+    <div @click="logout" class="sair">
       <mdiDoorOpen :size="40" class="icone-sair" />
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
 import mdiDoorOpen from "vue-material-design-icons/DoorOpen.vue";
 export default {
   components: {
     mdiDoorOpen,
   },
-  methods:{
-    ...mapActions('auth',['logout'])
+  methods: {
+    ...mapActions("auth", ["logout"]),
   },
 };
 </script>
@@ -63,16 +63,21 @@ export default {
   border-right: none;
 }
 .busca {
-  width: 500px;
-  height: 20px;
+  width: 250px;
+  height: 30px;
   background-color: #111;
   border-radius: 10px;
   border: 1px solid #4630ab;
   position: absolute;
-  right: 15%;
+  right: 10%;
   top: 43px;
   color: #c9c9c9;
   padding: 10px;
+  transition: 0.2s all ease-out;
+}
+.busca:focus {
+  width: 500px;
+  border: 1px solid #c9c9c9;
 }
 .tudo::-webkit-scrollbar {
   width: 0;
