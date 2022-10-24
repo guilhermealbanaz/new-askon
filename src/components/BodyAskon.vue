@@ -5,20 +5,20 @@
     <ResenhasAskon
       v-for="resenha in resenhas"
       :key="resenha.id"
-      :ImgName="resenha.img"
-      :ResenhaTitles="resenha.title"
-      :ResenhaDate="resenha.date"
+      :ImgName="'akali2.jpg'"
+      :ResenhaTitles="resenha.titulo"
+      :ResenhaDate="resenha.data"
     >
       <template v-slot:default>
         <p @click="irParaResenha(resenha)">
-          {{ resenha.content | truncate(200) }}
+          {{ resenha.descricao | truncate(200) }}
         </p>
       </template>
       <template v-slot:criador>
-        <p>{{ resenha.creator }}</p>
+        <p>{{ resenha.usuario }}</p>
       </template>
       <template v-slot:generos>
-        <p>{{ resenha.generos }}</p>
+        <p>{{ resenha.jogo }}</p>
       </template>
     </ResenhasAskon>
     <FooterAskon />
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FooterAskon from "@/components/FooterAskon";
 import ResenhasAskon from "@/components/ResenhasAskon";
 import { mapState } from "vuex";
@@ -46,40 +47,45 @@ export default {
         params: { resenha, id: resenha.id },
       });
     },
+    async getresenhas(){
+      const {data} = await axios.get("/Resenhas/")
+      this.resenhas = data
+    }
   },
   created() {
-    this.resenhas = [
-      {
-        id: 1,
-        title: "LEAGUE OF LEGENDS RESENHA",
-        content:
-          "GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
-        date: "2020-01-01",
-        img: "akali.jpg",
-        creator: "Guilherme",
-        generos: "Ação, ação, ação, ação, ação",
-      },
-      {
-        id: 2,
-        title: "ELDEN RING RESENHA",
-        content:
-          "SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
-        date: "2020-02-03",
-        img: "akali2.jpg",
-        creator: "Rodrigo",
-        generos: "Ação, ação, ação, ação, ação",
-      },
-      {
-        id: 3,
-        title: "FORTNITE RESENHA",
-        content:
-          "RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
-        date: "2020-06-04",
-        img: "akali3.jpg",
-        creator: "Guilherme",
-        generos: "Ação, ação, ação, ação, ação",
-      },
-    ];
+    this.getresenhas()
+    // this.get = [
+    //   {
+    //     id: 1,
+    //     title: "LEAGUE OF LEGENDS RESENHA",
+    //     content:
+    //       "GUILHERME ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+    //     date: "2020-01-01",
+    //     img: "akali.jpg",
+    //     creator: "Guilherme",
+    //     generos: "Ação, ação, ação, ação, ação",
+    //   },
+    //   {
+    //     id: 2,
+    //     title: "ELDEN RING RESENHA",
+    //     content:
+    //       "SODRE ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+    //     date: "2020-02-03",
+    //     img: "akali2.jpg",
+    //     creator: "Rodrigo",
+    //     generos: "Ação, ação, ação, ação, ação",
+    //   },
+    //   {
+    //     id: 3,
+    //     title: "FORTNITE RESENHA",
+    //     content:
+    //       "RODRIGO ipsum dolor sit amet consectetur adipisicing elit. Hic, eum sint reprehenderit, cumque, corporis autem dignissimos consequuntur repellendus sapiente iste officiis porro obcaecati doloremque numquam dolore iusto sed accusamus Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eum nobis praesentium maxime magni officiis facilis quibusdam libero suscipit dolorum nisi, quam molestias, reprehenderit expedita in! Ad voluptates quisquam laudantium.",
+    //     date: "2020-06-04",
+    //     img: "akali3.jpg",
+    //     creator: "Guilherme",
+    //     generos: "Ação, ação, ação, ação, ação",
+    //   },
+    // ];
   },
 };
 </script>

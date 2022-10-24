@@ -74,6 +74,9 @@ export default {
     mdiFileImagePlus,
     StarRating,
   },
+  methods:{
+    
+  }
 };
 </script>
 
