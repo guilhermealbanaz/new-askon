@@ -16,10 +16,10 @@
         </p>
       </template>
       <template v-slot:criador>
-        <p>{{ resenha.usuario }}</p>
+        <p>criador: {{ resenha.usuario.username }}</p>
       </template>
       <template v-slot:generos>
-        <p>{{ resenha.jogo }}</p>
+        <p>jogo: {{ resenha.jogo.nome }}</p>
       </template>
     </ResenhasAskon>
     <FooterAskon />
