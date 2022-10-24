@@ -8,6 +8,7 @@
       :ImgName="'akali2.jpg'"
       :ResenhaTitles="resenha.titulo"
       :ResenhaDate="resenha.data"
+      :Estrela="resenha.estrela"
     >
       <template v-slot:default>
         <p @click="irParaResenha(resenha)">
@@ -26,12 +27,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import FooterAskon from "@/components/FooterAskon";
 import ResenhasAskon from "@/components/ResenhasAskon";
 import { mapState } from "vuex";
+import Estrelas from "@/components/Estrelas.vue";
 export default {
-  components: { ResenhasAskon, FooterAskon },
+  components: { Estrelas, ResenhasAskon, FooterAskon },
   computed: {
     ...mapState("auth", ["loggedIn"]),
   },
@@ -47,13 +49,14 @@ export default {
         params: { resenha, id: resenha.id },
       });
     },
-    async getresenhas(){
-      const {data} = await axios.get("/Resenhas/")
-      this.resenhas = data
-    }
+    async getresenhas() {
+      const { data } = await axios.get("/Resenhas/");
+      this.resenhas = data;
+      console.log(this.resenhas);
+    },
   },
   created() {
-    this.getresenhas()
+    this.getresenhas();
     // this.get = [
     //   {
     //     id: 1,
@@ -92,7 +95,7 @@ export default {
 
 <style >
 .fade {
-  height: 100px;
+  height: 108px;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0), #111);
   top: 600px;

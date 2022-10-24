@@ -1,16 +1,17 @@
 <template>
   <div>
-      <router-view/>
-  </div>    
+    <router-view />
+  </div>
 </template>
 
 <script>
-
+import { tokenChange } from "@/plugins/axios.js";
 export default {
-  data(){
-    return{
-      
-    }
-  }
-}
+  data() {
+    return {};
+  },
+  mounted() {
+    tokenChange();
+  },
+};
 </script>

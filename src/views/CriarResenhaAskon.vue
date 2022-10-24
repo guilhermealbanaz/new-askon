@@ -15,7 +15,12 @@
           /></label>
         </div>
         <div class="box-texto-criar">
-          <input type="text" class="input-criar" placeholder="Título" />
+          <input
+            type="text"
+            class="input-criar"
+            placeholder="Título"
+            v-model="resenha.titulo"
+          />
           <label class="text-white" for="jogos">Escolha o jogo:</label>
           <select
             class="input-jogos-resenha"
@@ -32,6 +37,7 @@
         </div>
       </div>
       <textarea
+        v-model="resenha.descricao"
         placeholder="Digitar resenha..."
         style="resize: none"
         name="texto-criar"
@@ -41,42 +47,58 @@
         class="conteudo-criar"
       >
       </textarea>
-      <star-rating
-        class="estrelas-criar"
-        :animate="true"
-        :active-color="['#9485de', '#9485de', '#7c68de', '#6f59de', '#4630ab']"
-        :active-border-color="['#F6546A', '#a8c3c0']"
-        :star-points="[
-          23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19,
-          31, 17,
-        ]"
-        v-model="boundRating"
-      ></star-rating>
-      <div class="publicar-resenha">Publicar</div>
+      <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas>
+      <div class="publicar-resenha" @click="postresenhas">Publicar</div>
     </div>
   </div>
 </template>
 
 <script>
+import Estrelas from "@/components/Estrelas.vue";
+import axios from "axios";
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
 import StarRating from "vue-star-rating";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      boundRating: 5,
+      resenha: {},
+      boundRating: 2,
       games: "",
       backgroundatual: "default.jpg",
     };
   },
   components: {
+    Estrelas,
     mdiStar,
     mdiFileImagePlus,
     StarRating,
   },
-  methods:{
-    
-  }
+  methods: {
+    async postresenhas() {
+      console.log(axios.defaults.headers.common["Authorization"]);
+      axios.post("/Resenhas/", {
+        titulo: this.resenha.titulo,
+        descricao: this.resenha.descricao,
+        estrela: this.boundRating,
+        jogo: 1,
+        links: "www.gugas.com",
+        data: "2018-02-21 12:00:00",
+        usuario: 1,
+      });
+    },
+    alteraEstrela(estrela) {
+      this.boundRating = estrela;
+      console.log(this.boundRating);
+    },
+  },
+  computed: {
+    ...mapState("auth", ["user"]),
+  },
+  mounted() {
+    console.log(this.user);
+  },
 };
 </script>
 
