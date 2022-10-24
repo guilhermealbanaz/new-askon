@@ -68,4 +68,7 @@ export default {
 .VueCarousel-navigation-button {
   display: none;
 }
+.fade {
+  height: 150px;
+}
 </style>
