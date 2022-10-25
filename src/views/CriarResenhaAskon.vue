@@ -3,7 +3,7 @@
     <!-- eslint-disable-next-line -->
     <img
       class="imagem-fundo"
-      :src="require('../assets/' + backgroundatual)"
+      :src="require('../assets/' + model)"
       alt=""
     />
     <div class="container-criar">
@@ -15,25 +15,15 @@
           /></label>
         </div>
         <div class="box-texto-criar">
-          <input
-            type="text"
-            class="input-criar"
-            placeholder="Título"
-            v-model="resenha.titulo"
-          />
+          <input type="text" class="input-criar" placeholder="Título" />
           <label class="text-white" for="jogos">Escolha o jogo:</label>
-          <select
-            class="input-jogos-resenha"
-            name="jogos"
+          <advanced-search
             id="jogo"
-            v-model="backgroundatual"
+            class="input-criar"
+            @select="mudou"
+            :options="options"
           >
-            <option value="default.jpg" selected>Jogo selecionado</option>
-            <option value="fundo.jpg">Dark Souls</option>
-            <option value="Elden.jpg">Elden Ring</option>
-            <option value="valorant.jpg">Valorant</option>
-            <option value="leagueoflegends.jpg">League Of Legends</option>
-          </select>
+          </advanced-search>
         </div>
       </div>
       <textarea
@@ -54,11 +44,13 @@
 </template>
 
 <script>
+import AdvancedSearch from 'vue-advanced-search';
 import Estrelas from "@/components/Estrelas.vue";
 import axios from "axios";
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
 import StarRating from "vue-star-rating";
+import InputCriar from '@/components/InputCriar.vue';
 import { mapState } from "vuex";
 export default {
   data() {
@@ -67,6 +59,14 @@ export default {
       boundRating: 2,
       games: "",
       backgroundatual: "default.jpg",
+      model: 'default.jpg',
+        options: [
+            { label: 'League of Legends', value: 'leagueoflegends.jpg' },
+            { label: 'Elden Ring', value: 'Elden.jpg' },
+            { label: 'Dark Souls', value: 'fundo.jpg' },
+            { label: 'Fortnite', value: 'fundo3(slide).jpg' },
+            { label: 'Valorant', value: 'valorant.jpg' },
+        ]
     };
   },
   components: {
@@ -74,8 +74,13 @@ export default {
     mdiStar,
     mdiFileImagePlus,
     StarRating,
+    InputCriar,
+    AdvancedSearch,
   },
   methods: {
+    mudou(newValue) {
+      this.model = newValue
+    },
     async postresenhas() {
       console.log(axios.defaults.headers.common["Authorization"]);
       axios.post("/Resenhas/", {
@@ -189,7 +194,6 @@ export default {
   border: none;
   border: 1px solid #4630ab;
   color: #c9c9c9;
-  padding-left: 10px;
   font-size: 18px;
 }
 .input-jogos-resenha {
