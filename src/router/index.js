@@ -33,12 +33,13 @@ const routes = [
         component: IndividualAskon,
         props: true,
       },
-      {
-        name: 'Perfil',
-        path: "/perfil",
-        component: PerfilAskon,
-      },
     ],
+  },
+  {
+    name: "Perfil",
+    path: `/perfil/:id`,
+    component: () => import("@/layouts/PerfilMain.vue"),
+    props:true,
   },
   {
     path: "",
