@@ -21,12 +21,15 @@
 </template> -->
 
 <template>
-  <div class="tudo-individual">
+  <div
+    class="tudo-individual"
+    :style="{ backgroundImage: `url(${resenha.jogo.imagem})` }"
+  >
     <div class="container-resenha-individual" v-rellax="{ speed: 10 }">
       <ResenhasAskon
         id="individual"
         :key="resenha.id"
-        :ImgName="'default.jpg'"
+        :ImgName="resenha.imagem_resenha"
         :ResenhaTitles="resenha.titulo"
         :ResenhaDate="resenha.data"
         :Estrela="resenha.estrela"
@@ -129,7 +132,6 @@ export default {
   width: 100%;
   height: auto;
   position: absolute;
-  background-image: url(../assets/fundo.jpg);
   background-size: cover;
 }
 .container-resenha-individual {
