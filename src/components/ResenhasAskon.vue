@@ -2,12 +2,7 @@
   <div class="container-resenha">
     <div data-aos-duration="800" data-aos="fade-right" class="box-resenha">
       <div data-aos="flip-left" data-aos-duration="800">
-        <img
-          class="img-resenha"
-          draggable="false"
-          :src="require('../assets/' + ImgName)"
-          alt=""
-        />
+        <img class="img-resenha" draggable="false" :src="ImgName" alt="" />
       </div>
 
       <div class="box-texto-resenha">

@@ -1,21 +1,29 @@
 <template>
   <div class="tudo-criar" ref="tudo-criar">
     <!-- eslint-disable-next-line -->
-    <img
-      class="imagem-fundo"
-      :src="require('../assets/' + model)"
-      alt=""
-    />
+    <img class="imagem-fundo" :src="model" alt="" />
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
-          <input type="file" name="image" id="image" class="box-img-criar" />
+          <input
+            type="file"
+            name="image"
+            id="image"
+            class="box-img-criar"
+            @change="changeImagem"
+            ref="imagem_input"
+          />
           <label for="image" class="box-img-criar"
             ><mdiFileImagePlus :size="50"
           /></label>
         </div>
         <div class="box-texto-criar">
-          <input type="text" class="input-criar" placeholder="Título" />
+          <input
+            type="text"
+            class="input-criar"
+            placeholder="Título"
+            v-model="novaResenha.titulo"
+          />
           <label class="text-white" for="jogos">Escolha o jogo:</label>
           <advanced-search
             id="jogo"
@@ -27,7 +35,7 @@
         </div>
       </div>
       <textarea
-        v-model="resenha.descricao"
+        v-model="novaResenha.descricao"
         placeholder="Digitar resenha..."
         style="resize: none"
         name="texto-criar"
@@ -38,37 +46,33 @@
       >
       </textarea>
       <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas>
-      <div class="publicar-resenha" @click="postresenhas">Publicar</div>
+      <div class="publicar-resenha" @click="postResenha">Publicar</div>
     </div>
   </div>
 </template>
 
 <script>
-import AdvancedSearch from 'vue-advanced-search';
+import AdvancedSearch from "vue-advanced-search";
 import Estrelas from "@/components/Estrelas.vue";
 import axios from "axios";
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
 import StarRating from "vue-star-rating";
-import InputCriar from '@/components/InputCriar.vue';
+import InputCriar from "@/components/InputCriar.vue";
 import { mapState } from "vuex";
+
 export default {
   data() {
     return {
-      resenha: {},
-      boundRating: 2,
-      games: "",
-      backgroundatual: "default.jpg",
-      model: 'default.jpg',
-        options: [
-            { label: 'League of Legends', value: 'leagueoflegends.jpg' },
-            { label: 'Elden Ring', value: 'Elden.jpg' },
-            { label: 'Dark Souls', value: 'fundo.jpg' },
-            { label: 'Fortnite', value: 'fundo3(slide).jpg' },
-            { label: 'Valorant', value: 'valorant.jpg' },
-        ]
+      novaResenha: {
+        estrela: 0,
+      },
+      possibleJogos: [],
+      model: require("../assets/default.jpg"),
+      options: [],
     };
   },
+
   components: {
     Estrelas,
     mdiStar,
@@ -77,32 +81,57 @@ export default {
     InputCriar,
     AdvancedSearch,
   },
+
   methods: {
     mudou(newValue) {
-      this.model = newValue
+      this.model = newValue;
+      this.changeJogo(newValue);
     },
-    async postresenhas() {
-      console.log(axios.defaults.headers.common["Authorization"]);
-      axios.post("/Resenhas/", {
-        titulo: this.resenha.titulo,
-        descricao: this.resenha.descricao,
-        estrela: this.boundRating,
-        jogo: 1,
-        links: "www.gugas.com",
-        data: "2018-02-21 12:00:00",
-        usuario: 1,
+
+    changeJogo(imagem) {
+      const { nome } = this.possibleJogos.find((jogo) => jogo.imagem == imagem);
+      this.novaResenha.jogo = nome;
+    },
+
+    changeImagem() {
+      const file = this.$refs.imagem_input.files[0];
+      const reader = new FileReader();
+      const _this = this;
+
+      reader.onload = (result) => {
+        const imagem = reader.result.split(",")[1];
+
+        _this.novaResenha.imagem_resenha = imagem;
+        console.log(_this.novaResenha.imagem_resenha);
+      };
+
+      reader.readAsDataURL(file);
+    },
+
+    async postResenha() {
+      console.log(this.novaResenha);
+      await axios.post("/Resenhas/", this.novaResenha);
+    },
+
+    alteraEstrela(estrela) {
+      this.novaResenha.estrela = estrela;
+    },
+
+    async getPossibleJogos() {
+      const { data } = await axios.get("jogos");
+      this.possibleJogos = data;
+      this.options = data.map((jogo) => {
+        return { label: jogo.nome, value: jogo.imagem };
       });
     },
-    alteraEstrela(estrela) {
-      this.boundRating = estrela;
-      console.log(this.boundRating);
-    },
   },
+
   computed: {
     ...mapState("auth", ["user"]),
   },
-  mounted() {
-    console.log(this.user);
+
+  async mounted() {
+    await this.getPossibleJogos();
   },
 };
 </script>

@@ -5,7 +5,7 @@
     <ResenhasAskon
       v-for="resenha in resenhas"
       :key="resenha.id"
-      :ImgName="'akali2.jpg'"
+      :ImgName="resenha.imagem_resenha"
       :ResenhaTitles="resenha.titulo"
       :ResenhaDate="resenha.data"
       :Estrela="resenha.estrela"
@@ -32,6 +32,7 @@ import FooterAskon from "@/components/FooterAskon";
 import ResenhasAskon from "@/components/ResenhasAskon";
 import { mapState } from "vuex";
 import Estrelas from "@/components/Estrelas.vue";
+
 export default {
   components: { Estrelas, ResenhasAskon, FooterAskon },
   computed: {
@@ -49,6 +50,7 @@ export default {
         params: { resenha, id: resenha.id },
       });
     },
+
     async getresenhas() {
       const { data } = await axios.get("/Resenhas/");
       this.resenhas = data;
