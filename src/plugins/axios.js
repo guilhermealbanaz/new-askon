@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 
-axios.defaults.baseURL = 'https://web-production-a299.up.railway.app/'
+axios.defaults.baseURL = 'https://djangoaskon-project.up.railway.app/'
 
 const tokenChange = (token = store.state.auth.user.access) => {
     if (token) {
