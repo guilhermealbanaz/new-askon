@@ -1,9 +1,8 @@
 <template>
   <section>
     <div class="fade"></div>
-    <div class="loggedin" style="color: white">logado: {{ loggedIn }}</div>
     <ResenhasAskon
-      v-for="resenha in resenhas"
+      v-for="resenha in resenhas.results"
       :key="resenha.id"
       :ImgName="resenha.imagem_resenha"
       :ResenhaTitles="resenha.titulo"
@@ -22,6 +21,20 @@
         <p>jogo: {{ resenha.jogo.nome }}</p>
       </template>
     </ResenhasAskon>
+    <div
+      class="pagination-div"
+      style="
+        color: white;
+        display: flex;
+        gap: 15px;
+        width: 300px;
+        margin: 0 auto;
+      "
+    >
+      <button v-if="resenhas.previous" @click="page -= 1">Anterior</button>
+      <span>{{ page }}</span>
+      <button v-if="resenhas.next" @click="page += 1">Próximo</button>
+    </div>
     <FooterAskon />
   </section>
 </template>
@@ -30,20 +43,31 @@
 import axios from "axios";
 import FooterAskon from "@/components/FooterAskon";
 import ResenhasAskon from "@/components/ResenhasAskon";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import Estrelas from "@/components/Estrelas.vue";
 
 export default {
   components: { Estrelas, ResenhasAskon, FooterAskon },
   computed: {
     ...mapState("auth", ["loggedIn"]),
+    ...mapState(["isLoading"]),
   },
   data() {
     return {
+      page: 1,
       resenhas: [],
     };
   },
+
+  watch: {
+    page() {
+      this.getresenhas();
+    },
+  },
+
   methods: {
+    ...mapMutations(["TOGGLE_LOADING"]),
+
     irParaResenha(resenha) {
       this.$router.push({
         name: "Template",
@@ -52,12 +76,19 @@ export default {
     },
 
     async getresenhas() {
-      const { data } = await axios.get("/Resenhas/");
-      this.resenhas = data;
-      console.log(this.resenhas);
+      this.$emit("toggle_loading");
+      try {
+        const { data } = await axios.get(`/Resenhas/?page=${this.page}`);
+        this.resenhas = data;
+      } catch (e) {
+        console.log(e);
+      } finally {
+        this.$emit("toggle_loading");
+      }
     },
   },
-  created() {
+
+  mounted() {
     this.getresenhas();
     // this.get = [
     //   {

@@ -1,6 +1,6 @@
 <template>
-    <div class="container-resenhas-perfil">
-        <!-- <div class="box-resenhas-perfil" v-for="resenha in resenhas" :key="resenha.id">
+  <div class="container-resenhas-perfil">
+    <!-- <div class="box-resenhas-perfil" v-for="resenha in resenhas" :key="resenha.id">
           <div class="img-resenha-perfil"></div>
           <div class="box-texto-resenha-perfil">
             <div class="titulo-perfil">{{resenha.titulo}}</div>
@@ -12,54 +12,52 @@
           </div>
           </div>
         </div> -->
-        <ResenhasAskon
-        id="perfil"
-        v-for="resenha in resenhas"
-        :key="resenha.id"
-        :ImgName="'akali2.jpg'"
-        :ResenhaTitles="resenha.titulo"
-        :ResenhaDate="resenha.data"
-        :Estrela="resenha.estrela"
-        />
-        </div>
+    <ResenhasAskon
+      id="perfil"
+      v-for="resenha in resenhas.results"
+      :key="resenha.id"
+      :ImgName="resenha.imagem_resenha"
+      :ResenhaTitles="resenha.titulo"
+      :ResenhaDate="resenha.data"
+      :Estrela="resenha.estrela"
+    />
+  </div>
 </template>
 
 <script>
-import ResenhasAskon from '@/components/ResenhasAskon.vue'
-import { mapState } from "vuex";
+import ResenhasAskon from "@/components/ResenhasAskon.vue";
 import axios from "axios";
+
 export default {
-  components:{
-        ResenhasAskon
-    },
-  computed: {
-      ...mapState("auth", ["loggedIn"]),
-      ...mapState('usuariovisitado', ['usuariovisitado'])
-    },
-    data(){
-        return{
-            resenhas: [],
-        }
-    },
-    methods:{
-    async getresenhas() {
-        this.resenhas = []
-        const { data } = await axios.get(`/Resenhas/?iduser=${this.usuariovisitado.id}`);
+  components: {
+    ResenhasAskon,
+  },
+
+  data() {
+    return {
+      resenhas: [],
+    };
+  },
+
+  methods: {
+    async getResenhasFeitas(id) {
+      if (id) {
+        const { data } = await axios.get(`/Resenhas/?usuario=` + id);
         this.resenhas = data;
-        console.log(this.resenhas);
-    },    
+      } else {
+        const { data } = await axios.get(`minhas_resenhas`);
+        this.resenhas = data;
+      }
+      console.log(this.resenhas);
     },
-    mounted() {
-    this.getresenhas();
-    },
-    watch:{
-        usuariovisitado(){
-            this.getresenhas();
-        }
-    }
-}
+  },
+
+  mounted() {
+    const id = this.$route.params.id;
+    this.getResenhasFeitas(id);
+  },
+};
 </script>
 
 <style>
-
 </style>

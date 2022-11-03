@@ -29,28 +29,34 @@ const routes = [
       },
       {
         name: 'Template',
-        path:`/individual/:id`,
+        path: `/individual/:id`,
         component: IndividualAskon,
         props: true,
       },
     ],
   },
   {
+    name: "MeuPerfil",
+    path: `/perfil/`,
+    component: () => import("@/layouts/PerfilMain.vue"),
+    props: true,
+  },
+  {
     name: "Perfil",
     path: `/perfil/:id`,
     component: () => import("@/layouts/PerfilMain.vue"),
-    props:true,
+    props: true,
   },
   {
     path: "",
     name: "blank",
     component: () => import("@/layouts/BlankAskon.vue"),
-    meta:{
+    meta: {
       auth: false,
     },
     children: [
       {
-        name:'Login',
+        name: 'Login',
         path: "/login",
         component: LoginAskon,
       },
@@ -67,16 +73,16 @@ const router = new VueRouter({
   },
 });
 
-router.beforeEach((to, from, next)=>{
-  if (to.matched.some(record => record.meta.auth)){
-    if(!store.state.auth.loggedIn){
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.auth)) {
+    if (!store.state.auth.loggedIn) {
       next({
         name: "Login"
       })
-    }else{
+    } else {
       next()
     }
-  }else{
+  } else {
     next()
   }
 })

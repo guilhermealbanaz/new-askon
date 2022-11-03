@@ -3,53 +3,68 @@
     <div class="container-perfil">
       <div class="box-perfil">
         <div class="icone-perfil"></div>
-        <p class="text-white-perfil" @click='changecomponent("editar")' v-if='usuariovisitado.id == usuariologado.id'>Editar Perfil</p>
-        <p class="text-white-perfil" @click='changecomponent("resenhas")'>Resenhas</p>
-        <p class="text-white-perfil"  v-if='usuariovisitado.id == usuariologado.id' >Sair</p>
+        <p class="text-white-perfil" @click="changecomponent('editar')">
+          Editar Perfil
+        </p>
+        <p class="text-white-perfil" @click="changecomponent('resenhas')">
+          Resenhas
+        </p>
+        <p class="text-white-perfil">Sair</p>
       </div>
-      <ResenhasFeitas v-if="ComponenteMostrado == 'resenhas'"/>
-      <EditarPerfil v-if="ComponenteMostrado == 'editar'"/>
-      
+      <ResenhasFeitas v-if="ComponenteMostrado == 'resenhas'" />
+      <EditarPerfil v-if="ComponenteMostrado == 'editar'" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { mapActions } from 'vuex';
-import ResenhasFeitas from '@/components/perfil/ResenhasFeitas.vue'
-import EditarPerfil from '@/components/perfil/EditarPerfil.vue'
+import axios from "axios";
+import ResenhasFeitas from "@/components/perfil/ResenhasFeitas.vue";
+import EditarPerfil from "@/components/perfil/EditarPerfil.vue";
+
 export default {
   components: {
     ResenhasFeitas,
     EditarPerfil,
-},
-  computed:{
-    ...mapState('usuariovisitado', ['usuariovisitado']),
-    ...mapState('usuariologado', ['usuariologado']), 
-},
+  },
 
-    data(){
-        return{
-            resenhas: [],
-            ComponenteMostrado: 'resenhas'
-        }
+  data() {
+    return {
+      resenhas: [],
+      usuario: {},
+      ComponenteMostrado: "resenhas",
+    };
+  },
+
+  methods: {
+    changecomponent(ComponenteMostrado) {
+      this.ComponenteMostrado = ComponenteMostrado;
     },
-    methods:{
-        changecomponent(ComponenteMostrado){
-            this.ComponenteMostrado = ComponenteMostrado
-        },
-        ...mapActions('usuariovisitado', ['getUsuariovisitado'] )
+
+    async getUsuario(id) {
+      if (id) {
+        const { data } = await axios.get("usuarios/" + id);
+        this.usuario = data;
+        console.log(data);
+        return;
+      } else {
+        const { data } = await axios.get("meu_usuario/");
+        this.usuario = data;
+        console.log(data);
+      }
     },
-    mounted(){
-        console.log(this.usuariovisitado )
-        console.log(this.usuariologado )
-        console.log(this.$route.params.id)
-        this.getUsuariovisitado(this.$route.params.id)
-        
-    },
-    
-  
+  },
+
+  mounted() {
+    const id = this.$route.params.id;
+    console.log(id);
+
+    if (id) {
+      this.getUsuario(id);
+    } else {
+      this.getUsuario();
+    }
+  },
 };
 </script>
 
@@ -94,7 +109,6 @@ export default {
   top: 2.5%;
   background-color: #111;
 }
-
 
 /* ------------ Perfil ------------- */
 

@@ -19,7 +19,16 @@
       </slide>
     </carousel>
     <div class="fade"></div>
-    <BodyAskon></BodyAskon>
+    <div class="loading-home" v-show="isLoading">
+      <img
+        src="https://manifestoglauber.com.br/frontend/assets/images/loader.gif"
+        alt="Loading..."
+      />
+    </div>
+    <BodyAskon
+      v-show="!isLoading"
+      @toggle_loading="isLoading = !isLoading"
+    ></BodyAskon>
   </div>
 </template>
 
@@ -28,6 +37,8 @@ import { Carousel, Slide } from "vue-carousel";
 // import mdiStar from "vue-material-design-icons/Star.vue";
 // import mdiGithub  from "vue-material-design-icons/Github.vue";
 import BodyAskon from "@/components/BodyAskon.vue";
+import { mapState } from "vuex";
+
 export default {
   components: {
     BodyAskon,
@@ -38,6 +49,7 @@ export default {
     // mdiGithub,
     // mdiLinkedin,
   },
+
   data() {
     return {
       imagensTopicos: [
@@ -46,13 +58,17 @@ export default {
         require("@/assets/fundo3(slide).jpg"),
         require("@/assets/fundo4(slide).jpg"),
       ],
+      isLoading: false,
     };
+  },
+
+  mounted() {
+    /* console.log(this.isLoading); */
   },
 };
 </script>
+
 <style>
-
-
 .VueCarousel {
   height: 800px;
 }
