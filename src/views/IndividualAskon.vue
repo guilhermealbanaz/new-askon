@@ -51,8 +51,8 @@
           type="text"
           class="comentario-resenha"
         />
-        <button class="btn-comentar" @click="comentar">Publicar</button>
-        <div @click="coracao = !coracao" class="box-coracao">
+        <button class="btn-comentar" @click="postComentario">Publicar</button>
+        <div @click="curtirDescurtir" class="box-coracao">
           <mdiHeartOutline class="icone-curtir" :size="50" />
           <mdiHeart v-show="coracao" class="icone-curtir" :size="50" />
         </div>
@@ -63,7 +63,7 @@
           v-for="(comentario, index) in comentarios"
           :key="index"
         >
-          {{ comentario }}
+          {{ comentario.comentario }}
         </div>
       </form>
     </div>
@@ -94,7 +94,7 @@ export default {
     return {
       resenha: {},
       comentario: "",
-      comentarios: [" muito daora a resenha", " não gostei!"],
+      comentarios: [],
       coracao: false,
     };
   },
@@ -110,6 +110,37 @@ export default {
       const { data } = await axios.get("Resenhas/" + id);
       console.log(data);
       this.resenha = data;
+      this.getComentarios();
+      this.getCurtida();
+    },
+
+    async getCurtida() {
+      const { data } = await axios.get(
+        "curtidas/?id_resenha=" + this.resenha.id
+      );
+
+      this.coracao = data.length ? true : false;
+    },
+
+    async postComentario() {
+      await axios.post("comentario/", {
+        comentario: this.comentario,
+        resenha: this.resenha.id,
+      });
+      this.comentario = "";
+      this.getComentarios();
+    },
+
+    async curtirDescurtir() {
+      await axios.get(`Resenhas/${this.resenha.id}/curtir`);
+      this.getCurtida();
+    },
+
+    async getComentarios() {
+      const { data } = await axios.get(
+        "comentario/?id_resenha=" + this.resenha.id
+      );
+      this.comentarios = data;
     },
 
     comentar() {

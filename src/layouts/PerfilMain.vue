@@ -2,23 +2,49 @@
   <div class="tude">
     <div class="container-perfil">
       <div class="box-perfil">
-        <div class="icone-perfil"></div>
-        <p class="text-white-perfil" @click="changecomponent('editar')">
+        <div
+          class="icone-perfil"
+          :style="{ backgroundImage: 'url(' + usuario.imagem_perfil + ')' }"
+        ></div>
+        <button
+          @click="$refs['input-imagem-perfil'].click()"
+          v-if="!$route.params.id"
+        >
+          Alterar foto de Perfil
+        </button>
+        <p
+          class="text-white-perfil"
+          @click="changecomponent('editar')"
+          v-if="!$route.params.id"
+        >
           Editar Perfil
         </p>
         <p class="text-white-perfil" @click="changecomponent('resenhas')">
           Resenhas
         </p>
-        <p class="text-white-perfil">Sair</p>
+        <p
+          class="text-white-perfil"
+          v-if="!$route.params.id"
+          @click="submitLogout"
+        >
+          Sair
+        </p>
       </div>
       <ResenhasFeitas v-if="ComponenteMostrado == 'resenhas'" />
       <EditarPerfil v-if="ComponenteMostrado == 'editar'" />
+      <input
+        type="file"
+        v-show="false"
+        ref="input-imagem-perfil"
+        @change="alterarImagemPerfil"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { mapActions } from "vuex";
 import ResenhasFeitas from "@/components/perfil/ResenhasFeitas.vue";
 import EditarPerfil from "@/components/perfil/EditarPerfil.vue";
 
@@ -37,6 +63,8 @@ export default {
   },
 
   methods: {
+    ...mapActions("auth", ["logout"]),
+
     changecomponent(ComponenteMostrado) {
       this.ComponenteMostrado = ComponenteMostrado;
     },
@@ -49,9 +77,32 @@ export default {
         return;
       } else {
         const { data } = await axios.get("meu_usuario/");
-        this.usuario = data;
+        this.usuario = data[0];
         console.log(data);
       }
+    },
+
+    submitLogout() {
+      this.logout();
+      this.$router.push({ name: "Login" });
+    },
+
+    alterarImagemPerfil() {
+      const imagem = this.$refs["input-imagem-perfil"].files[0];
+      const reader = new FileReader();
+      const _this = this;
+
+      reader.onload = () => {
+        const resultado = reader.result.split(",")[1];
+
+        axios.patch(`/usuarios/${_this.usuario.id}/`, {
+          imagem_perfil: resultado,
+        });
+
+        _this.getUsuario();
+      };
+
+      reader.readAsDataURL(imagem);
     },
   },
 

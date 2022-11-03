@@ -24,7 +24,7 @@ export const auth = {
                 const userInfo = await authService.login(user)
                 commit('setLoginInfo', userInfo)
                 tokenChange(userInfo.access)
-                dispatch('usuariologado/getUsuarioLogado', {},{root:true})
+                dispatch('usuariologado/getUsuarioLogado', {}, { root: true })
                 return Promise.resolve(userInfo)
             } catch (e) {
                 cleanToken()
