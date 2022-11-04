@@ -5,7 +5,10 @@
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
-          <div class="img-inserida" :style="`background-image: url('${imagem}')`">
+          <div
+            class="img-inserida"
+            :style="`background-image: url('${imagem}')`"
+          >
             <input
               type="file"
               name="image"
@@ -67,7 +70,7 @@ export default {
       possibleJogos: [],
       model: require("../assets/default.jpg"),
       options: [],
-      imagem: ""
+      imagem: "",
     };
   },
 
@@ -97,7 +100,7 @@ export default {
       reader.onload = (result) => {
         const imagem = reader.result.split(",")[1];
 
-        _this.imagem = reader.result
+        _this.imagem = reader.result;
 
         // const img = new Image();
         // img.src = reader.result;
@@ -114,7 +117,6 @@ export default {
     async postResenha() {
       console.log(this.novaResenha);
       await axios.post("/Resenhas/", this.novaResenha);
-
     },
 
     alteraEstrela(estrela) {
@@ -201,7 +203,7 @@ export default {
   justify-content: center;
 }
 
-.img-inserida{
+.img-inserida {
   width: 25%;
   height: 200px;
   background-color: #4630ab;
@@ -213,7 +215,6 @@ export default {
   margin-left: 20px;
   background-position: center;
   background-size: cover;
-
 }
 
 .box-img-criar {

@@ -7,7 +7,7 @@
           :style="{ backgroundImage: 'url(' + usuario.imagem_perfil + ')' }"
         ></div>
         <button
-        class="text-white-perfil"
+          class="text-white-perfil"
           @click="$refs['input-imagem-perfil'].click()"
           v-if="!$route.params.id"
         >
@@ -93,10 +93,10 @@ export default {
       const reader = new FileReader();
       const _this = this;
 
-      reader.onload = () => {
+      reader.onload = async () => {
         const resultado = reader.result.split(",")[1];
 
-        axios.patch(`/usuarios/${_this.usuario.id}/`, {
+        await axios.patch(`/usuarios/${_this.usuario.id}/`, {
           imagem_perfil: resultado,
         });
 
