@@ -181,14 +181,15 @@ export default {
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #4630ab;
+  border: 2px solid #4630ab;
 }
 .icone-perfil {
-  cursor: pointer;
   width: 180px;
   height: 180px;
   background-color: #4630ab;
-  border-radius: 50%;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
 }
 .container-resenhas-perfil {
   min-width: 60vw;

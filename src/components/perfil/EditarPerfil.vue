@@ -67,11 +67,12 @@ export default {
 .forms {
   width: 100%;
   height: 100%;
-  border: 1px solid #4630ab;
+  border: 2px solid #4630ab;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  border-radius: 10px;
 }
 label {
   color: #c9c9c9;
