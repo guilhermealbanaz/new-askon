@@ -60,7 +60,6 @@
             @click:append="mostrarSenha = !mostrarSenha"
           />
           <input
-            type="text"
             class="input-login"
             placeholder="Confirmar Senha"
             type="password"
