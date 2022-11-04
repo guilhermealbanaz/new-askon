@@ -5,17 +5,16 @@
     <div class="container-criar">
       <div class="box-criar-resenha">
         <div class="box-img-resenha-criar">
-          <input
-            type="file"
-            name="image"
-            id="image"
-            class="box-img-criar"
-            @change="changeImagem"
-            ref="imagem_input"
-          />
-          <label for="image" class="box-img-criar"
-            ><mdiFileImagePlus :size="50"
-          /></label>
+          <div class="img-inserida" :style="`background-image: url('${imagem}')`">
+            <input
+              type="file"
+              name="image"
+              id="image"
+              class="box-img-criar"
+              @change="changeImagem"
+              ref="imagem_input"
+            />
+          </div>
         </div>
         <div class="box-texto-criar">
           <input
@@ -55,8 +54,6 @@
 import AdvancedSearch from "vue-advanced-search";
 import Estrelas from "@/components/Estrelas.vue";
 import axios from "axios";
-import mdiStar from "vue-material-design-icons/Star.vue";
-import mdiFileImagePlus from "vue-material-design-icons/FileImagePlus.vue";
 import StarRating from "vue-star-rating";
 import InputCriar from "@/components/InputCriar.vue";
 import { mapState } from "vuex";
@@ -70,13 +67,12 @@ export default {
       possibleJogos: [],
       model: require("../assets/default.jpg"),
       options: [],
+      imagem: ""
     };
   },
 
   components: {
     Estrelas,
-    mdiStar,
-    mdiFileImagePlus,
     StarRating,
     InputCriar,
     AdvancedSearch,
@@ -101,6 +97,13 @@ export default {
       reader.onload = (result) => {
         const imagem = reader.result.split(",")[1];
 
+        _this.imagem = reader.result
+
+        // const img = new Image();
+        // img.src = reader.result;
+
+        // _this.$refs["imagem_input"].style.backgroundImage = "url(" + img + ")";
+
         _this.novaResenha.imagem_resenha = imagem;
         console.log(_this.novaResenha.imagem_resenha);
       };
@@ -111,6 +114,7 @@ export default {
     async postResenha() {
       console.log(this.novaResenha);
       await axios.post("/Resenhas/", this.novaResenha);
+
     },
 
     alteraEstrela(estrela) {
@@ -196,7 +200,24 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
+.img-inserida{
+  width: 25%;
+  height: 200px;
+  background-color: #4630ab;
+  border: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  background-position: center;
+  background-size: cover;
+
+}
+
 .box-img-criar {
+  opacity: 0;
   width: 25%;
   height: 200px;
   background-color: #4630ab;
