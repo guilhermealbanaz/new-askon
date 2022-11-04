@@ -5,7 +5,9 @@
         <div
           class="icone-perfil"
           :style="{ backgroundImage: 'url(' + usuario.imagem_perfil + ')' }"
-        ></div>
+        >
+          <span class="usuario-username">{{ usuario.username }}</span>
+        </div>
         <button
           class="text-white-perfil"
           @click="$refs['input-imagem-perfil'].click()"
@@ -129,6 +131,17 @@ export default {
   text-align: center;
 }
 
+.usuario-username {
+  position: absolute;
+  height: 26px;
+  top: calc(100% - 13px);
+  background: #c9c9c9;
+  padding: 0 15px;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .button-sair:hover {
   background: darkred;
 }
@@ -198,6 +211,7 @@ export default {
   border: 2px solid #4630ab;
 }
 .icone-perfil {
+  position: relative;
   border-radius: 10px;
   background-size: cover;
   background-position: center;

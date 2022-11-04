@@ -21,6 +21,11 @@
       :ResenhaDate="resenha.data"
       :Estrela="resenha.estrela"
     />
+    <div class="pagination-div" v-if="resenhas.results.length">
+      <button v-if="resenhas.previous" @click="page -= 1">Anterior</button>
+      <span>{{ page }}</span>
+      <button v-if="resenhas.next" @click="page += 1">Próximo</button>
+    </div>
   </div>
 </template>
 
@@ -35,20 +40,22 @@ export default {
 
   data() {
     return {
-      resenhas: [],
+      resenhas: {},
+      page: 1,
     };
   },
 
   methods: {
     async getResenhasFeitas(id) {
       if (id) {
-        const { data } = await axios.get(`/Resenhas/?usuario=` + id);
+        const { data } = await axios.get(
+          `/resenhas_usuario/?page=` + this.page + `&id_usuario=` + id
+        );
         this.resenhas = data;
       } else {
-        const { data } = await axios.get(`minhas_resenhas`);
+        const { data } = await axios.get(`minhas_resenhas/?page=` + this.page);
         this.resenhas = data;
       }
-      console.log(this.resenhas);
     },
   },
 
@@ -56,8 +63,18 @@ export default {
     const id = this.$route.params.id;
     this.getResenhasFeitas(id);
   },
+
+  watch: {
+    page() {
+      const id = this.$route.params.id;
+      this.getResenhasFeitas(id);
+    },
+  },
 };
 </script>
 
 <style>
+#perfil {
+  margin-top: 0;
+}
 </style>

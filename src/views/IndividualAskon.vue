@@ -57,13 +57,30 @@
           <mdiHeart v-show="coracao" class="icone-curtir" :size="50" />
         </div>
       </div>
-      <form class="box-comentarios">
+      <form class="box-comentarios" v-if="comentarios.length">
         <div
           style="color: white"
           v-for="(comentario, index) in comentarios"
+          class="box-comentario"
           :key="index"
         >
-          {{ comentario.comentario }}
+          <div
+            alt="Usuario.jpg"
+            :style="{
+              backgroundImage: 'url(' + comentario.usuario.imagem_perfil + ')',
+            }"
+            class="imagem_perfil-comentario"
+          ></div>
+          <div class="infos-comentario">
+            <p class="conteudo-comentario">{{ comentario.comentario }}</p>
+            <p class="user-infos-comentario">
+              {{ comentario.usuario.username }} |
+              <span
+                >{{ new Date(comentario.data).toLocaleDateString() }} às
+                {{ new Date(comentario.data).toLocaleTimeString() }}</span
+              >
+            </p>
+          </div>
         </div>
       </form>
     </div>
@@ -141,6 +158,11 @@ export default {
         "comentario/?id_resenha=" + this.resenha.id
       );
       this.comentarios = data;
+      console.log(this.comentarios);
+    },
+
+    getData(data) {
+      const date = new Date(data);
     },
 
     comentar() {
@@ -158,6 +180,32 @@ export default {
   margin: 0;
   padding: 0;
 }
+
+.imagem_perfil-comentario {
+  background-size: cover;
+  width: 80px;
+  background-position: center;
+}
+
+.user-infos-comentario {
+  font-size: 0.85em;
+  color: #999999;
+}
+
+.box-comentario {
+  color: #c9c9c9;
+  padding: 10px;
+  display: flex;
+  height: 100px;
+}
+
+.infos-comentario {
+  margin-left: 15px;
+}
+.box-comentario img {
+  height: 100%;
+}
+
 .tudo-individual {
   top: 0;
   max-width: 100%;
@@ -229,7 +277,7 @@ export default {
 }
 .box-comentarios {
   min-width: 70%;
-  height: 100px;
+  height: auto;
   box-sizing: border-box;
   border: 2px solid #4630ab;
   border-radius: 5px;
