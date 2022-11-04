@@ -57,7 +57,7 @@ export default {
   font-size: 20px;
   padding-right: 30px;
   border-right: 1px solid #4630ab !important;
-  text-decoration: none;
+  text-decoration: #111;
 }
 .texto-nav:last-child {
   border-right: none;
