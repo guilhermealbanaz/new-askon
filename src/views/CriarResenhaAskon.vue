@@ -220,12 +220,19 @@ export default {
   transform: translateX(-50%);
   padding: 5px 20px;
   background: #c9c9c9;
+  border: 1px solid #4630ab;
+  color: #111;
+  transition: all 0.2s ease;
 }
-
+#button-imagem:hover {
+  background-color: #4630ab;
+  color: #c9c9c9;
+}
 .img-inserida {
   position: relative;
   width: 100%;
-  background: #4630ab;
+  background: #111;
+  border: 1px solid #4630ab;
   height: 100%;
 }
 
