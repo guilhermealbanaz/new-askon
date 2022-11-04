@@ -1,24 +1,22 @@
 <template>
   <div>
-    <NavBarAskon
-      v-if="
-        $route.name != `Perfil` &&
-        $route.name != `Template` &&
-        $route.name != `Criar`
-      "
-    ></NavBarAskon>
-    <header2 v-else />
+    <NavBarAskon v-if="$route.name == 'Home'" />
+    <Header2 v-else />
     <router-view />
   </div>
 </template>
 
 <script>
-import header2 from "@/components/header2.vue";
+import Header2 from "@/components/Header2.vue";
 import NavBarAskon from "@/components/NavBarAskon.vue";
 export default {
   components: {
     NavBarAskon,
-    header2,
+    Header2,
+  },
+
+  mounted() {
+    console.log(this.$route.name);
   },
 };
 </script>

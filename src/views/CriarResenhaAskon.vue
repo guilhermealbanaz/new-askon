@@ -7,16 +7,23 @@
         <div class="box-img-resenha-criar">
           <div
             class="img-inserida"
-            :style="`background-image: url('${imagem}')`"
+            :style="{
+              backgroundImage: `url(${imagem})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }"
           >
             <input
               type="file"
               name="image"
-              id="image"
-              class="box-img-criar"
+              style="display: none"
               @change="changeImagem"
               ref="imagem_input"
             />
+            <button id="button-imagem" @click="$refs['imagem_input'].click()">
+              Adicionar Imagem
+            </button>
           </div>
         </div>
         <div class="box-texto-criar">
@@ -115,8 +122,8 @@ export default {
     },
 
     async postResenha() {
-      console.log(this.novaResenha);
-      await axios.post("/Resenhas/", this.novaResenha);
+      const resposta = await axios.post("/Resenhas/", this.novaResenha);
+      console.log(resposta);
     },
 
     alteraEstrela(estrela) {
@@ -203,18 +210,23 @@ export default {
   justify-content: center;
 }
 
-.img-inserida {
-  width: 25%;
-  height: 200px;
-  background-color: #4630ab;
-  border: none;
+#button-imagem {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 20px;
-  background-position: center;
-  background-size: cover;
+  top: calc(100% - 23px);
+  border-radius: 5px;
+  width: 200px;
+  left: 50%;
+  height: 36px;
+  transform: translateX(-50%);
+  padding: 5px 20px;
+  background: #c9c9c9;
+}
+
+.img-inserida {
+  position: relative;
+  width: 100%;
+  background: #4630ab;
+  height: 100%;
 }
 
 .box-img-criar {

@@ -133,10 +133,6 @@ export default {
   background: darkred;
 }
 
-.icone-perfil {
-  margin-top: 35px;
-}
-
 .tude {
   width: 100vw;
   height: 100vh;
@@ -199,14 +195,17 @@ export default {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #4630ab;
+  border: 2px solid #4630ab;
 }
 .icone-perfil {
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  margin-top: 35px;
   cursor: pointer;
   width: 180px;
   height: 180px;
   background-color: #4630ab;
-  border-radius: 50%;
 }
 .container-resenhas-perfil {
   min-width: 60vw;

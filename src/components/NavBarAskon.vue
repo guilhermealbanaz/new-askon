@@ -12,7 +12,7 @@
       </div>
     </div>
     <input type="text" class="busca" />
-    <div @click="logout" class="sair">
+    <div @click="submitLogout" class="sair" style="cursor: pointer">
       <mdiDoorOpen :size="40" class="icone-sair" />
     </div>
   </div>
@@ -27,6 +27,11 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["logout"]),
+
+    submitLogout() {
+      this.logout();
+      this.$router.push({ name: "Login" });
+    },
   },
 };
 </script>
