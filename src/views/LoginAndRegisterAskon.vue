@@ -39,7 +39,7 @@
       <div class="registrar" v-if="action == 'registrar'" key="registrar">
         <div class="container-registrar">
           <div class="img-login"></div>
-          <input type="text" class="input-login" placeholder="Email" />
+          <input type="text" class="input-login" placeholder="Email" v-model="usuario.email"/>
           <input
             v-model="usuario.username"
             type="text"
