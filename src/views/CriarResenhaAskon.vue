@@ -55,7 +55,18 @@
       >
       </textarea>
       <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas>
-      <div class="publicar-resenha" @click="postResenha">Publicar</div>
+      <div class="publicar-resenha" @click="postResenha" ref="buttonPublicar">
+        <span v-if="!isLoading">Publicar</span>
+        <img
+          src="../assets/loading (1).gif"
+          alt="Loading"
+          id="loading-criar"
+          v-else
+        />
+      </div>
+      <span class="error" v-if="hasError"
+        >Ocorreu um erro! Verifique os campos e tente novamente!</span
+      >
     </div>
   </div>
 </template>
@@ -78,6 +89,8 @@ export default {
       model: require("../assets/default.jpg"),
       options: [],
       imagem: "",
+      isLoading: false,
+      hasError: false,
     };
   },
 
@@ -122,8 +135,18 @@ export default {
     },
 
     async postResenha() {
-      const resposta = await axios.post("/Resenhas/", this.novaResenha);
-      console.log(resposta);
+      this.$refs["buttonPublicar"].style.background = "#111";
+      this.hasError = false;
+      this.isLoading = true;
+      try {
+        const { data } = await axios.post("/Resenhas/", this.novaResenha);
+        this.$router.push({ path: `/individual/${data.id}` });
+      } catch (e) {
+        this.isLoading = false;
+        this.hasError = true;
+      } finally {
+        this.isLoading = false;
+      }
     },
 
     alteraEstrela(estrela) {
@@ -150,6 +173,16 @@ export default {
 </script>
 
 <style>
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#loading-criar {
+  height: 20px;
+}
+
 .estrelas-criar {
   margin: 15px;
 }
@@ -300,12 +333,12 @@ export default {
   border-radius: 20px;
   margin: 20px;
   background-color: #4630ab;
+  color: #c9c9c9;
   transition: 0.2s all ease-out;
 }
 .publicar-resenha:hover {
   background-color: #111;
   color: #c9c9c9;
-  scale: 1.1;
   cursor: pointer;
 }
 </style>
