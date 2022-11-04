@@ -1,18 +1,18 @@
 <template>
   <div class="forms">
-    <div style="color: white">Olá, {{ usuario.username }}</div>
+    <div style="color: white; font-size: 30px">Olá, {{ usuario.username }}</div>
     <label for="nome">Nome:</label>
     <input
       name="nome"
       type="text"
-      placeholder="Nome"
+      placeholder="Alterar Nome"
       v-model="alterarUsuario.username"
     />
     <label for="nome">Email:</label>
     <input
       name="email"
       type="email"
-      placeholder="E-mail"
+      placeholder="Alterar E-mail"
       v-model="alterarUsuario.email"
     />
     <label for="senha">Senha:</label>
@@ -63,5 +63,33 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.forms {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #4630ab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+label {
+  color: #c9c9c9;
+}
+input {
+  background-color: #111;
+  border: 1px solid #4630ab;
+  border-radius: 10px;
+  height: 40px;
+  width: 300px;
+  padding: 5px;
+  color: #c9c9c9;
+}
+button {
+  height: 40px;
+  width: 250px;
+  background-color: #4630ab;
+  border-radius: 30px;
+  color: #c9c9c9;
+}
 </style>

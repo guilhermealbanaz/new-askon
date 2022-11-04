@@ -23,13 +23,6 @@
     </ResenhasAskon>
     <div
       class="pagination-div"
-      style="
-        color: white;
-        display: flex;
-        gap: 15px;
-        width: 300px;
-        margin: 0 auto;
-      "
     >
       <button v-if="resenhas.previous" @click="page -= 1">Anterior</button>
       <span>{{ page }}</span>
@@ -127,6 +120,28 @@ export default {
 </script>
 
 <style >
+.pagination-div {
+  color: white;
+  display: flex;
+  gap: 15px;
+  width: 300px;
+  margin: 0px auto;
+  padding-bottom: 50px;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+.pagination-div span {
+  padding: 8px;
+  border: 1px solid #4630ab;
+  border-radius: 10px;
+}
+.pagination-div button {
+  height: 35px;
+  background-color: #4630ab;
+  border-radius: 10px;
+  padding: 5px;
+}
 .fade {
   height: 108px;
   width: 100%;

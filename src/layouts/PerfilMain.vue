@@ -7,6 +7,7 @@
           :style="{ backgroundImage: 'url(' + usuario.imagem_perfil + ')' }"
         ></div>
         <button
+        class="text-white-perfil"
           @click="$refs['input-imagem-perfil'].click()"
           v-if="!$route.params.id"
         >

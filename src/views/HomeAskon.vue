@@ -69,12 +69,20 @@ export default {
 </script>
 
 <style>
+.loading-home {
+  scale: 0.3;
+  width: 100px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 .VueCarousel {
-  height: 800px;
+  height: 700px;
 }
 .VueCarousel img {
   width: 100%;
-  max-height: 800px;
+  max-height: 700px;
 }
 .VueCarousel-dot {
   scale: 0.7;
@@ -85,6 +93,6 @@ export default {
   display: none;
 }
 .fade {
-  height: 150px;
+  display: none;
 }
 </style>

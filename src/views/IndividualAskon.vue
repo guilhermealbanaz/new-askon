@@ -160,10 +160,12 @@ export default {
 }
 .tudo-individual {
   top: 0;
-  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
   height: auto;
   position: absolute;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: repeat-y;
 }
 .container-resenha-individual {
   border-radius: 20px;
