@@ -24,7 +24,7 @@
           Resenhas
         </p>
         <p
-          class="text-white-perfil"
+          class="text-white-perfil button-sair"
           v-if="!$route.params.id"
           @click="submitLogout"
         >
@@ -121,6 +121,22 @@ export default {
 </script>
 
 <style>
+.button-sair {
+  padding: 5px 20px;
+  border: 1px solid darkred;
+  border-radius: 5px;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.button-sair:hover {
+  background: darkred;
+}
+
+.icone-perfil {
+  margin-top: 35px;
+}
+
 .tude {
   width: 100vw;
   height: 100vh;
@@ -151,6 +167,7 @@ export default {
   border-bottom: 1px solid #4630ab;
   box-sizing: border-box;
 }
+
 .borda-lateral-2 {
   -webkit-clip-path: polygon(0 0, 95% 0%, 30% 100%, 0% 100%);
   clip-path: polygon(0 0, 95% 0%, 30% 100%, 0% 100%);
@@ -174,22 +191,22 @@ export default {
   gap: 20px;
 }
 .box-perfil {
+  font-size: 1.2em;
+  gap: 35px;
   min-width: 250px;
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid #4630ab;
+  border: 1px solid #4630ab;
 }
 .icone-perfil {
+  cursor: pointer;
   width: 180px;
   height: 180px;
   background-color: #4630ab;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
+  border-radius: 50%;
 }
 .container-resenhas-perfil {
   min-width: 60vw;
