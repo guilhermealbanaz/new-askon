@@ -39,7 +39,12 @@
       <div class="registrar" v-if="action == 'registrar'" key="registrar">
         <div class="container-registrar">
           <div class="img-login"></div>
-          <input type="text" class="input-login" placeholder="Email" v-model="usuario.email"/>
+          <input
+            type="text"
+            class="input-login"
+            placeholder="Email"
+            v-model="usuario.email"
+          />
           <input
             v-model="usuario.username"
             type="text"
@@ -58,6 +63,7 @@
             type="text"
             class="input-login"
             placeholder="Confirmar Senha"
+            type="password"
           />
           <button class="btn-login" @click="submitRegister">Registrar</button>
         </div>
