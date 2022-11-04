@@ -57,6 +57,7 @@ export default {
 
     async atualizarUsuario() {
       await axios.patch(`usuarios/${this.usuario.id}/`, this.alterarUsuario);
+      this.alterarUsuario = {};
       this.getUsuario();
     },
   },
