@@ -15,10 +15,10 @@
         </p>
       </template>
       <template v-slot:criador>
-        <p>criador: {{ resenha.usuario.username }}</p>
+        <p>Criador: {{ resenha.usuario.username }}</p>
       </template>
       <template v-slot:generos>
-        <p>jogo: {{ resenha.jogo.nome }}</p>
+        <p>Jogo: {{ resenha.jogo.nome }}</p>
       </template>
     </ResenhasAskon>
     <div class="pagination-div">

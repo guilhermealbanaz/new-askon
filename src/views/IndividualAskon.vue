@@ -55,6 +55,7 @@
         <div @click="curtirDescurtir" class="box-coracao">
           <mdiHeartOutline class="icone-curtir" :size="50" />
           <mdiHeart v-show="coracao" class="icone-curtir" :size="50" />
+          <span class="qtd-curtidas">{{ resenha.qtd_curtidas }}</span>
         </div>
       </div>
       <form class="box-comentarios" v-if="comentarios.length">
@@ -150,6 +151,9 @@ export default {
     async curtirDescurtir() {
       await axios.get(`Resenhas/${this.resenha.id}/curtir`);
       this.getCurtida();
+
+      const id = this.$route.params.id;
+      this.getResenha(id);
     },
 
     async getComentarios() {
@@ -264,7 +268,17 @@ export default {
   padding-left: 5px;
   color: #c9c9c9;
 }
+
+.qtd-curtidas {
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  font-size: 0.8em;
+  color: white;
+  top: 50%;
+}
 .box-coracao {
+  position: relative;
   width: 50px;
   height: 50px;
   cursor: pointer;
