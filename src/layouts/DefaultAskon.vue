@@ -1,7 +1,6 @@
 <template>
   <div>
     <NavBarAskon v-if="$route.name == 'Home'" />
-    <Header2 v-else />
     <router-view />
   </div>
 </template>
