@@ -128,7 +128,6 @@ export default {
         // _this.$refs["imagem_input"].style.backgroundImage = "url(" + img + ")";
 
         _this.novaResenha.imagem_resenha = imagem;
-        console.log(_this.novaResenha.imagem_resenha);
       };
 
       reader.readAsDataURL(file);

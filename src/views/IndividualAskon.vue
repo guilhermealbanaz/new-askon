@@ -125,7 +125,6 @@ export default {
   methods: {
     async getResenha(id) {
       const { data } = await axios.get("Resenhas/" + id);
-      console.log(data);
       this.resenha = data;
       this.getComentarios();
       this.getCurtida();
@@ -158,7 +157,6 @@ export default {
         "comentario/?id_resenha=" + this.resenha.id
       );
       this.comentarios = data;
-      console.log(this.comentarios);
     },
 
     getData(data) {

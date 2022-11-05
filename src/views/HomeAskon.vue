@@ -61,10 +61,6 @@ export default {
       isLoading: false,
     };
   },
-
-  mounted() {
-    /* console.log(this.isLoading); */
-  },
 };
 </script>
 

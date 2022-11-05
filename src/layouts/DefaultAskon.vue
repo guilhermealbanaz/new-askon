@@ -14,10 +14,6 @@ export default {
     NavBarAskon,
     Header2,
   },
-
-  mounted() {
-    console.log(this.$route.name);
-  },
 };
 </script>
 

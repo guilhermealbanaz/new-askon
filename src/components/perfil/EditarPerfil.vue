@@ -52,7 +52,6 @@ export default {
     async getUsuario() {
       const { data } = await axios.get("meu_usuario");
       this.usuario = data[0];
-      console.log(this.usuario);
     },
 
     async atualizarUsuario() {

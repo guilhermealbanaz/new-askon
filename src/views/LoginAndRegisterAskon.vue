@@ -138,7 +138,6 @@ export default {
       const error = await AuthService.register(this.usuario);
       if (!error) {
         this.ChangeAction("login");
-        console.log("Deu certo");
       }
     },
   },

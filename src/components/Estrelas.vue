@@ -34,21 +34,21 @@
 import StarRating from "vue-star-rating";
 export default {
   props: ["boundRating"],
+
   components: {
     StarRating,
   },
+
   data() {
     return {
       rating: this.boundRating,
     };
   },
+
   methods: {
     mudarEstrela() {
       this.$emit("alteraEstrela", this.rating);
     },
-  },
-  mounted() {
-    console.log(this.$route.path);
   },
 };
 </script>

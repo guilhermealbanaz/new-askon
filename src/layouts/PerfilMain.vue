@@ -76,12 +76,10 @@ export default {
       if (id) {
         const { data } = await axios.get("usuarios/" + id);
         this.usuario = data;
-        console.log(data);
         return;
       } else {
         const { data } = await axios.get("meu_usuario/");
         this.usuario = data[0];
-        console.log(data);
       }
     },
 
@@ -111,7 +109,6 @@ export default {
 
   mounted() {
     const id = this.$route.params.id;
-    console.log(id);
 
     if (id) {
       this.getUsuario(id);

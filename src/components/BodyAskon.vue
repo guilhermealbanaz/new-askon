@@ -21,9 +21,7 @@
         <p>jogo: {{ resenha.jogo.nome }}</p>
       </template>
     </ResenhasAskon>
-    <div
-      class="pagination-div"
-    >
+    <div class="pagination-div">
       <button v-if="resenhas.previous" @click="page -= 1">Anterior</button>
       <span>{{ page }}</span>
       <button v-if="resenhas.next" @click="page += 1">Próximo</button>
@@ -74,7 +72,7 @@ export default {
         const { data } = await axios.get(`/Resenhas/?page=${this.page}`);
         this.resenhas = data;
       } catch (e) {
-        console.log(e);
+        console.error(e);
       } finally {
         this.$emit("toggle_loading");
       }
