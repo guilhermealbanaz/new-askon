@@ -35,7 +35,6 @@
           </button>
         </div>
       </div>
-
       <div class="registrar" v-if="action == 'registrar'" key="registrar">
         <div class="container-registrar">
           <div class="img-login"></div>
@@ -132,7 +131,13 @@ export default {
       }
     },
     ChangeAction(action) {
-      this.action = action;
+      this.action = action
+      if (this.action == action) {
+        this.usuario.username = '',
+        this.usuario.password = '';
+      } else{
+
+      };
     },
     async submitRegister() {
       const error = await AuthService.register(this.usuario);

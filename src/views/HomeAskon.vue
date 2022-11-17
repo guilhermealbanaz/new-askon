@@ -44,10 +44,6 @@ export default {
     BodyAskon,
     Carousel,
     Slide,
-
-    // mdiStar,
-    // mdiGithub,
-    // mdiLinkedin,
   },
 
   data() {

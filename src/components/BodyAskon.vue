@@ -10,7 +10,7 @@
       :Estrela="resenha.estrela"
     >
       <template v-slot:default>
-        <p @click="irParaResenha(resenha)">
+        <p @click="irParaResenha(resenha)" style="cursor: pointer">
           {{ resenha.descricao | truncate(200) }}
         </p>
       </template>
@@ -129,6 +129,7 @@ export default {
   gap: 30px;
   align-items: center;
 }
+
 .pagination-div span {
   padding: 8px;
   border: 1px solid #4630ab;

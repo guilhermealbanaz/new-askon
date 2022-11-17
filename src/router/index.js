@@ -4,7 +4,6 @@ import store from '../store'
 import HomeAskon from "@/views/HomeAskon.vue";
 import CriarResenhaAskon from "@/views/CriarResenhaAskon.vue";
 import LoginAskon from "@/views/LoginAndRegisterAskon.vue";
-import PerfilAskon from "@/views/PerfilAskon.vue";
 import IndividualAskon from "@/views/IndividualAskon.vue";
 Vue.use(VueRouter);
 

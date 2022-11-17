@@ -6,12 +6,10 @@
 </template>
 
 <script>
-import Header2 from "@/components/Header2.vue";
 import NavBarAskon from "@/components/NavBarAskon.vue";
 export default {
   components: {
-    NavBarAskon,
-    Header2,
+    NavBarAskon
   },
 };
 </script>
