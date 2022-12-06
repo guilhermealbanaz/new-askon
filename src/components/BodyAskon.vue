@@ -7,7 +7,7 @@
       :ImgName="resenha.imagem_resenha"
       :ResenhaTitles="resenha.titulo"
       :ResenhaDate="resenha.data"
-      :Estrela="resenha.estrela"
+      :Estrela="resenha.nota_geral"
     >
       <template v-slot:default>
         <p @click="irParaResenha(resenha)" style="cursor: pointer">
@@ -117,7 +117,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .pagination-div {
   color: white;
   display: flex;

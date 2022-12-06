@@ -1,4 +1,4 @@
- <!-- <template>
+<!-- <template>
   <section>
         <div>
             <ResenhasAskon
@@ -32,7 +32,7 @@
         :ImgName="resenha.imagem_resenha"
         :ResenhaTitles="resenha.titulo"
         :ResenhaDate="resenha.data"
-        :Estrela="resenha.estrela"
+        :Estrela="resenha.nota_geral"
       >
         <div class="conteudo-resenha text-white">{{ resenha.descricao }}</div>
         <template v-slot:criador>
@@ -88,7 +88,10 @@
   </div>
 </template>
 
-<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=WeakMap"></script>
+<script
+  crossorigin="anonymous"
+  src="https://polyfill.io/v3/polyfill.min.js?features=WeakMap"
+></script>
 <script>
 import mdiStar from "vue-material-design-icons/Star.vue";
 import mdiGithub from "vue-material-design-icons/Github.vue";

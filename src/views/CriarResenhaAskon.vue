@@ -54,7 +54,57 @@
         class="conteudo-criar"
       >
       </textarea>
-      <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas>
+      <!-- <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas> -->
+      <div class="coelho">
+        <star-rating
+          :animate="true"
+          :active-color="[
+            '#9485de',
+            '#9485de',
+            '#7c68de',
+            '#6f59de',
+            '#4630ab',
+          ]"
+          :active-border-color="['#F6546A', '#a8c3c0']"
+          :star-points="[
+            23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19,
+            31, 17,
+          ]"
+          v-model="novaResenha.nota_cenario"
+        ></star-rating>
+        <star-rating
+          :animate="true"
+          :active-color="[
+            '#9485de',
+            '#9485de',
+            '#7c68de',
+            '#6f59de',
+            '#4630ab',
+          ]"
+          :active-border-color="['#F6546A', '#a8c3c0']"
+          :star-points="[
+            23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19,
+            31, 17,
+          ]"
+          v-model="novaResenha.nota_audio"
+        ></star-rating>
+        <star-rating
+          :animate="true"
+          :active-color="[
+            '#9485de',
+            '#9485de',
+            '#7c68de',
+            '#6f59de',
+            '#4630ab',
+          ]"
+          :active-border-color="['#F6546A', '#a8c3c0']"
+          :star-points="[
+            23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19,
+            31, 17,
+          ]"
+          v-model="novaResenha.nota_grafico"
+        ></star-rating>
+      </div>
       <div class="publicar-resenha" @click="postResenha" ref="buttonPublicar">
         <span v-if="!isLoading">Publicar</span>
         <img
@@ -73,7 +123,6 @@
 
 <script>
 import AdvancedSearch from "vue-advanced-search";
-import Estrelas from "@/components/Estrelas.vue";
 import axios from "axios";
 import StarRating from "vue-star-rating";
 import InputCriar from "@/components/InputCriar.vue";
@@ -83,7 +132,9 @@ export default {
   data() {
     return {
       novaResenha: {
-        estrela: 0,
+        nota_cenario: 0,
+        nota_grafico: 0,
+        nota_audio: 0,
       },
       possibleJogos: [],
       model: require("../assets/default.jpg"),
@@ -95,7 +146,6 @@ export default {
   },
 
   components: {
-    Estrelas,
     StarRating,
     InputCriar,
     AdvancedSearch,
