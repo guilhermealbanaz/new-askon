@@ -20,7 +20,6 @@
             :increment="0.01"
             :read-only="true"
             :fixed-points="2"
-            :animate="true"
             :active-color="[
               '#9485de',
               '#9485de',

@@ -19,7 +19,7 @@
       :ImgName="resenha.imagem_resenha"
       :ResenhaTitles="resenha.titulo"
       :ResenhaDate="resenha.data"
-      :Estrela="resenha.estrela"
+      :Estrela="resenha.nota_geral"
     />
     <div class="pagination-div" v-if="resenhas.results.length">
       <button v-if="resenhas.previous" @click="page -= 1">Anterior</button>
