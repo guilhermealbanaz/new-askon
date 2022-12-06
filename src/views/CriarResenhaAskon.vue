@@ -55,8 +55,8 @@
       >
       </textarea>
       <!-- <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas> -->
-      <div class="coelho">
-        <star-rating
+      <div class="box-rating">
+        <div class="item-rating"><h2>Cenário</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',
@@ -71,8 +71,8 @@
             31, 17,
           ]"
           v-model="novaResenha.nota_cenario"
-        ></star-rating>
-        <star-rating
+        ></star-rating></div>
+        <div class="item-rating"><h2>Trilha Sonora</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',
@@ -87,8 +87,9 @@
             31, 17,
           ]"
           v-model="novaResenha.nota_audio"
-        ></star-rating>
-        <star-rating
+        ></star-rating></div>
+        <div class="item-rating">
+        <h2>Gráfico</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',
@@ -103,7 +104,7 @@
             31, 17,
           ]"
           v-model="novaResenha.nota_grafico"
-        ></star-rating>
+        ></star-rating></div>
       </div>
       <div class="publicar-resenha" @click="postResenha" ref="buttonPublicar">
         <span v-if="!isLoading">Publicar</span>
@@ -389,5 +390,14 @@ export default {
   background-color: #111;
   color: #c9c9c9;
   cursor: pointer;
+}
+.box-rating {
+  padding: 10px;
+  width: 90%;
+  height: 350px;
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
 }
 </style>
