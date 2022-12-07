@@ -56,7 +56,7 @@
       </textarea>
       <!-- <Estrelas :boundRating="5" @alteraEstrela="alteraEstrela"></Estrelas> -->
       <div class="box-rating">
-        <div class="item-rating"><h2>Cenário</h2><star-rating
+        <div class="item-rating"><h2 class="text-white">Cenário</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',
@@ -72,7 +72,7 @@
           ]"
           v-model="novaResenha.nota_cenario"
         ></star-rating></div>
-        <div class="item-rating"><h2>Trilha Sonora</h2><star-rating
+        <div class="item-rating"><h2 class="text-white">Trilha Sonora</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',
@@ -89,7 +89,7 @@
           v-model="novaResenha.nota_audio"
         ></star-rating></div>
         <div class="item-rating">
-        <h2>Gráfico</h2><star-rating
+        <h2 class="text-white">Gráfico</h2><star-rating
           :animate="true"
           :active-color="[
             '#9485de',

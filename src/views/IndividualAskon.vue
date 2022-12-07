@@ -33,6 +33,10 @@
         :ResenhaTitles="resenha.titulo"
         :ResenhaDate="resenha.data"
         :Estrela="resenha.nota_geral"
+        :Estrela1="resenha.nota_cenario"
+        :Estrela2="resenha.nota_audio"
+        :Estrela3="resenha.nota_grafico"
+        :Geral="resenha.nota_geral"
       >
         <div class="conteudo-resenha text-white">{{ resenha.descricao }}</div>
         <template v-slot:criador>
