@@ -10,67 +10,6 @@
             {{ Geral }}    
       </span>
       </div>  
-
-      <h2 class="text-white">Cenário</h2>
-      <star-rating
-            :rating="Estrela1"
-            :increment="0.01"
-            :read-only="true"
-            :fixed-points="2"
-            :active-color="[
-              '#9485de',
-              '#9485de',
-              '#7c68de',
-              '#6f59de',
-              '#4630ab',
-            ]"
-            :active-border-color="['#F6546A', '#a8c3c0']"
-            :star-points="[
-              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
-              19, 31, 17,
-            ]"
-          ></star-rating>
-
-          <h2 class="text-white">Trilha Sonora</h2>
-          <star-rating
-            :rating="Estrela2"
-            :increment="0.01"
-            :read-only="true"
-            :fixed-points="2"
-            :active-color="[
-              '#9485de',
-              '#9485de',
-              '#7c68de',
-              '#6f59de',
-              '#4630ab',
-            ]"
-            :active-border-color="['#F6546A', '#a8c3c0']"
-            :star-points="[
-              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
-              19, 31, 17,
-            ]"
-          ></star-rating>
-
-          <h2 class="text-white">Gráfico</h2>
-          <star-rating
-            :rating="Estrela3"
-            :increment="0.01"
-            :read-only="true"
-            :fixed-points="2"
-            :active-color="[
-              '#9485de',
-              '#9485de',
-              '#7c68de',
-              '#6f59de',
-              '#4630ab',
-            ]"
-            :active-border-color="['#F6546A', '#a8c3c0']"
-            :star-points="[
-              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
-              19, 31, 17,
-            ]"
-          ></star-rating>
-
       <div class="box-texto-resenha">
         <h2 class="titulo">{{ ResenhaTitles }}</h2>
         <div class="text-white">
@@ -99,8 +38,72 @@
               19, 31, 17,
             ]"
           ></star-rating>
+          <div class="divisor"></div>
+          <div class="box-item">
+      <div class="item">
+      <h2 class="text-white">Cenário</h2>
+      <star-rating
+            :rating="Estrela1"
+            v-bind:star-size="35"
+            :increment="0.01"
+            :read-only="true"
+            :fixed-points="2"
+            :active-color="[
+              '#9485de',
+              '#9485de',
+              '#7c68de',
+              '#6f59de',
+              '#4630ab',
+            ]"
+            :active-border-color="['#F6546A', '#a8c3c0']"
+            :star-points="[
+              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
+              19, 31, 17,
+            ]"
+          ></star-rating></div>
 
-          <div></div>
+          <div class="item"><h2 class="text-white">Trilha Sonora</h2>
+          <star-rating
+            :rating="Estrela2"
+            v-bind:star-size="35"
+            :increment="0.01"
+            :read-only="true"
+            :fixed-points="2"
+            :active-color="[
+              '#9485de',
+              '#9485de',
+              '#7c68de',
+              '#6f59de',
+              '#4630ab',
+            ]"
+            :active-border-color="['#F6546A', '#a8c3c0']"
+            :star-points="[
+              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
+              19, 31, 17,
+            ]"
+          ></star-rating></div>
+
+          <div class="item"><h2 class="text-white">Gráfico</h2>
+          <star-rating
+            :rating="Estrela3"
+            v-bind:star-size="35"
+            :increment="0.01"
+            :read-only="true"
+            :fixed-points="2"
+            :active-color="[
+              '#9485de',
+              '#9485de',
+              '#7c68de',
+              '#6f59de',
+              '#4630ab',
+            ]"
+            :active-border-color="['#F6546A', '#a8c3c0']"
+            :star-points="[
+              23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
+              19, 31, 17,
+            ]"
+          ></star-rating></div>
+      </div>
         </div>
       </div>
     </div>
@@ -140,8 +143,7 @@
               23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46,
               19, 31, 17,
             ]"
-          ></star-rating> 
-
+          ></star-rating>
           
         </div>
       </div>
@@ -210,6 +212,7 @@ export default {
   height: 250px;
   margin-top: 50px;
   border: 2px solid #4630ab;
+  margin-left: 40px;
 }
 #individual .data {
   font-size: 20px;
@@ -218,7 +221,7 @@ export default {
 #individual .box-resenha {
   height: auto;
   width: 80%;
-  left: -3%;
+  left: 8.6%;
   transition: none;
   transform: none;
   display: flex;
@@ -236,5 +239,34 @@ export default {
   color: #c9c9c9;
   width: 100%;
   font-size: 20px;
+}
+.box-item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 20px;
+  left: -53%;
+}
+.divisor {
+  width: 200%;
+  position: relative;
+  right: 50%;
+  height: 2px;
+  background-color: #c9c9c9;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.item {
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 10px;
+}
+.numero-geral {
+  position: absolute;
+  right: 150px;
+  bottom: 175px;
+  font-size: 30px;
 }
 </style>
