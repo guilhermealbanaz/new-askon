@@ -245,7 +245,7 @@ export default {
   position: relative;
   align-items: center;
   gap: 20px;
-  left: -53%;
+  left: -43%;
 }
 .divisor {
   width: 200%;
