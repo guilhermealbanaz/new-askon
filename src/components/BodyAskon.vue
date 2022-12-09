@@ -35,10 +35,9 @@ import axios from "axios";
 import FooterAskon from "@/components/FooterAskon";
 import ResenhasAskon from "@/components/ResenhasAskon";
 import { mapState, mapMutations } from "vuex";
-import Estrelas from "@/components/Estrelas.vue";
 
 export default {
-  components: { Estrelas, ResenhasAskon, FooterAskon },
+  components: { ResenhasAskon, FooterAskon },
   computed: {
     ...mapState("auth", ["loggedIn"]),
     ...mapState(["isLoading"]),

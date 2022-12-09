@@ -149,6 +149,7 @@ export default {
   background-color: #111;
   position: absolute;
   top: 0;
+  overflow: hidden;
 }
 .nav-2 {
   width: 200px;
